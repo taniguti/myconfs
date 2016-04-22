@@ -29,5 +29,3 @@ set wrapscan
 set encoding=utf8
 set fileencodings=iso-2022-jp,sjis,utf8,euc-jp
 set fileformats=unix,dos
-
-"a

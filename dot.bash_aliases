@@ -20,7 +20,7 @@ case ${HOSTTYPE} in
 		alias	du='du -k'
 		;;
 	Linux)
-		alias ls='ls --color=tty --show-control-char -aFC'
+		alias ls='ls --color=tty --show-control-char -aFCh'
 		;;
 	*)
 		if [ `type -p ja-ls` ]; then
@@ -94,6 +94,10 @@ fi
 
 if [ `type -p gpatch` ]; then
 	alias	 patch=gpatch
+fi
+
+if [ `type -p strace` ]; then
+    alias strace='strace -s 1024 -t'
 fi
 
 unset ME HOSTTYPE HOSTNAME

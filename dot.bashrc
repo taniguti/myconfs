@@ -1,5 +1,5 @@
 #
-# Dot.Bashrc    written by taniguti
+# dot.bashrc
 # 
 
 # Path check function ##########################
@@ -142,6 +142,7 @@ NetBSD)
 			export TERM
 		fi
 	fi
+        export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/local/lib/pkgconfig
 	;;
 Linux)
 	LC_CTYPE=ja_JP.utf8
@@ -170,6 +171,11 @@ Darwin)
 *)
 	;;
 esac
+
+# perlbrew
+if [ -f ${HOME}/perl5/perlbrew/etc/bashrc ]; then
+        source ${HOME}/perl5/perlbrew/etc/bashrc
+fi
 
 #+++ MISC +++
 if [ -f $HOME/.bash_aliases ]; then
