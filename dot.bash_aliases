@@ -14,6 +14,7 @@ case ${HOSTTYPE} in
 		alias	du='du -h'
 		alias	refreshmail='/usr/bin/sqlite3 ~/Library/Mail/Envelope\ Index vacuum'
     alias ssh-add='ssh-add -K'
+    alias top='top -u'
 		;;
 	NetBSD)
 		alias	df='df -k'
@@ -54,7 +55,6 @@ alias	 h='history'
 alias	 bye='exit'
 alias	 where='type -a'
 alias	 j='jobs'
-alias	 top='top -u'
 alias	 halt='sync;sync;sync;sudo shutdown -h now'
 alias	 reboot='sync;sync;sync;sudo reboot'
 
