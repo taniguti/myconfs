@@ -1,0 +1,4 @@
+# My XPDFRC
+# 
+
+displayCIDFontX Adobe-Japan1 '-kochi-mincho-medium-r-normal-*-%s-*-*-*-*-*-jisx0208.1983-0' ISO-2022-JP

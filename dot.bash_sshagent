@@ -1,0 +1,38 @@
+#
+# Dot.Bash_SSHAgent
+# 
+
+CURRENT_SYSTEM=`uname -s`
+if [ ! $SSH_AGENT_PID ]; then
+	MY_KEY_DSA=$HOME/.ssh/id_dsa
+	MY_KEY_RSA=$HOME/.ssh/identity.rsa1
+	if [ -r $MY_KEY_DSA -o -r $MY_KEY_RSA ]; then
+		if [ `type -p ssh-agent` ]; then
+			SSH_AGENT_ON="no"
+			case $CURRENT_SYSTEM in
+			Darwin )
+				SSH_AGENT_ON="yes"
+				if [ ! $SSH_TTY ]; then
+					SSH_TTY="Terminal"
+					export SSH_TTY
+				fi
+				;;
+			*)
+				if [ $SSH_TTY ]; then
+					SSH_AGENT_ON="yes"
+				fi
+				;;
+			esac
+	
+			if  [ $SSH_AGENT_ON = "yes" ]; then
+				eval `ssh-agent -s`
+				if  [ -r $MY_KEY_DSA ]; then
+					ssh-add $MY_KEY_DSA
+				fi
+				if  [ -r $MY_KEY_RSA ]; then
+					ssh-add $MY_KEY_RSA
+				fi
+			fi
+		fi
+	fi
+fi
