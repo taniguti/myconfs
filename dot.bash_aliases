@@ -14,13 +14,14 @@ case ${HOSTTYPE} in
 		alias	du='du -h'
 		alias	refreshmail='/usr/bin/sqlite3 ~/Library/Mail/Envelope\ Index vacuum'
     alias ssh-add='ssh-add -K'
+    alias top='top -u'
 		;;
 	NetBSD)
 		alias	df='df -k'
 		alias	du='du -k'
 		;;
 	Linux)
-		alias ls='ls --color=tty --show-control-char -aFC'
+		alias ls='ls --color=tty --show-control-char -aFCh'
 		;;
 	*)
 		if [ `type -p ja-ls` ]; then
@@ -54,7 +55,6 @@ alias	 h='history'
 alias	 bye='exit'
 alias	 where='type -a'
 alias	 j='jobs'
-alias	 top='top -u'
 alias	 halt='sync;sync;sync;sudo shutdown -h now'
 alias	 reboot='sync;sync;sync;sudo reboot'
 
@@ -94,6 +94,10 @@ fi
 
 if [ `type -p gpatch` ]; then
 	alias	 patch=gpatch
+fi
+
+if [ `type -p strace` ]; then
+    alias strace='strace -s 1024 -t'
 fi
 
 if [ -f ${HOME}/.bash_aliases_by_host ]; then
