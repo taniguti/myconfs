@@ -27,7 +27,7 @@ echo $FOUND_PATH
 # information is shown in K-Blocks
 BLOCKSIZE=K; export BLOCKSIZE
 # PROMPT
-PS1="\u@\h[\!]$ "
+PS1="\u@\h:\W/[\!]$ "
 # Editor
 EDITOR=vi; export EDITOR
 HOSTNAME=`hostname -s`
