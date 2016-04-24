@@ -10,18 +10,19 @@ if [ -x /sw/bin/init.sh ]; then . /sw/bin/init.sh ; fi
 if [ -f ~/.bashrc ]; then . ~/.bashrc ; fi
 
 case $CURRENT_SYSTEM in
+    NetBSD)
+        # use /etc/motd.
+    ;;
     Darwin)
         MACTYPE=`system_profiler SPHardwareDataType | awk '$2 == "Identifier:" {print $3}'`
         echo "This host hardware is ${MACTYPE:=unknown} running with ${CURRENT_SYSTEM}/${CURRENT_MPU} $CURRENT_RELEASE."
 	  ;;
     Linux)
-        if [ -f /etc/system-release ]; then DISTRIBUTION=`cat /etc/system-release`; fi
-        if [ ${DISTRIBUTION:-unknown} != "unknown" ]; then
-            echo "This is ${CURRENT_SYSTEM}/${CURRENT_MPU} ${DISTRIBUTION}: ${CURRENT_RELEASE}.
-        else
-            echo "This is ${CURRENT_SYSTEM}/${CURRENT_MPU} ${DISTRIBUTION}: ${CURRENT_RELEASE}.
+        if [ -f /etc/system-release ]; then DISTRIBUTION=`cat /etc/system-release` ; fi
+        echo "This is ${CURRENT_SYSTEM}/${CURRENT_MPU} ${DISTRIBUTION:=unknown}: ${CURRENT_RELEASE}."
+    ;;
     *)
-        "This is a ${CURRENT_MPU}-unknown-${CURRENT_SYSTEM} $CURRENT_RELEASE system."
+        echo "This is a ${CURRENT_MPU}-unknown-${CURRENT_SYSTEM} $CURRENT_RELEASE system."
     ;;
 esac
 
