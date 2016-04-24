@@ -33,17 +33,17 @@ EDITOR=vi; export EDITOR
 HOSTNAME=`hostname -s`
 
 # HISTORY
-HISTCONTROL=ignoreboth; export HISTCONTROL
-HISTSIZE=100000; export HISTSIZE
 HISTTIMEFORMAT='%Y-%m-%dT%T%z '; export HISTTIMEFORMAT
 if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
-        function share_history {
+        share_history() {
                 history -a
                 history -c
                 history -r
         }
         PROMPT_COMMAND='share_history'
         shopt -u histappend
+        HISTCONTROL=ignoreboth; export HISTCONTROL
+        HISTSIZE=100000; export HISTSIZE
 fi
 
 #+++ Path list +++
