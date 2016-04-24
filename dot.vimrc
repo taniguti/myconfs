@@ -14,7 +14,8 @@ set showmatch
 "syntax on
 
 "インデントをスペース4つ分に設定
-set tabstop=2
+set shiftwidth=4
+set tabstop=4
 
 "タブの代わりに空白文字を指定する
 set expandtab
