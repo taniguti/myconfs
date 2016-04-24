@@ -8,31 +8,32 @@ HOSTNAME=`hostname -s`
 alias al='alias'
 
 case ${HOSTTYPE} in
-	Darwin)
-		alias	ls='ls -ahFCv'
-		alias	df='df -h'
-		alias	du='du -h'
-		alias	refreshmail='/usr/bin/sqlite3 ~/Library/Mail/Envelope\ Index vacuum'
-    alias ssh-add='ssh-add -K'
-    alias top='top -u'
-		;;
+    Darwin)
+        alias ls='ls -ahFCv'
+        alias df='df -h'
+        alias du='du -h'
+        alias refreshmail='/usr/bin/sqlite3 ~/Library/Mail/Envelope\ Index vacuum'
+        alias kinit='kinit --renewable'
+        alias ssh-add='ssh-add -K'
+        alias top='top -u'
+        ;;
 	NetBSD)
-		alias	ls='ls -aFCh'
-		alias	df='df -k'
-		alias	du='du -k'
-		;;
+        alias ls='ls -aFCh'
+        alias df='df -k'
+        alias du='du -k'
+        ;;
 	Linux)
-		alias ls='ls --color=tty --show-control-char -aFCh'
-		;;
-	*)
-		if [ "`type -p ja-ls`" ]; then
-			alias	 ls='ja-ls -aFEC'
-		else
-			alias ls='ls -aFCh'
-		fi
-		alias	 df='df -k'
-		alias	 du='du -k'
-		;;
+        alias ls='ls --color=tty --show-control-char -aFCh'
+        ;;
+    *)
+        if [ "`type -p ja-ls`" ]; then
+            alias ls='ja-ls -aFEC'
+        else
+            alias ls='ls -aFCh'
+        fi
+        alias df='df -k'
+        alias du='du -k'
+        ;;
 esac
 
 alias ll='ls -ohlh'
@@ -60,24 +61,23 @@ alias halt='sync;sync;sync;sudo shutdown -h now'
 alias reboot='sync;sync;sync;sudo reboot'
 alias shibuya='curl wttr.in/tokyo'
 alias getgip='curl http://ifconfig.me'
-alias kinit='kinit --renewable'
 
 if [ "jless" = $PAGER ];then
-	alias	 less='jless'
+    alias less='jless'
 elif [ "more" = $PAGER ];then
-	alias	 less='more'
+    alias less='more'
 fi
 
 if [ "`type -p jman`" ]; then
-	alias	 man='jman'
+    alias man='jman'
 fi
 
 if [ "`type -p gzcat`" ]; then
-	alias	 zcat='gzcat'
+    alias zcat='gzcat'
 fi
 
 if [ "`type -p svstat`" -a  "`type -p sudo`" ]; then
-	alias	 svstat='sudo svstat'
+    alias svstat='sudo svstat'
 fi
 
 if [ "`type -p svc`" -a  "`type -p sudo`" ]; then
