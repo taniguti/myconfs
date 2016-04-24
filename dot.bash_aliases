@@ -96,4 +96,8 @@ if [ `type -p gpatch` ]; then
 	alias	 patch=gpatch
 fi
 
+if [ -f ${HOME}/.bash_aliases_by_host ]; then
+    . ${HOME}/.bash_aliases_by_host
+fi
+
 unset ME HOSTTYPE HOSTNAME
