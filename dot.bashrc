@@ -123,8 +123,8 @@ PERL_BADLANG=0; export PERL_BADLANG
 MYARCH=`uname -s`
 case $MYARCH in
 FreeBSD)
-	LANG=ja_JP.eucJP
-	LC_CTYPE=ja_JP.eucJP
+	LANG=ja_JP.UTF-8
+	LC_CTYPE=ja_JP.UTF-8
 	LC_TIME=C
 	export LANG LC_CTYPE LC_TIME
 	;;
@@ -133,8 +133,8 @@ NetBSD)
 	LC_TIME=C
 	export LC_TIME
 	if [ "jless" = $PAGER ]; then
-		LANG=ja_JP.eucJP
-		LC_CTYPE=ja_JP.eucJP
+		LANG=ja_JP.UTF-8
+		LC_CTYPE=ja_JP.UTF-8
 		JLESSCHARSET=japanese
 		export LANG LC_CTYPE JLESSCHARSET
 	fi
