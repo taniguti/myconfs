@@ -106,9 +106,9 @@ export PATH
 export MANPATH
 
 #+++ PAGER +++
-if [ `type -p jless` ]; then
+if [ "`type -p jless`" ]; then
 	PAGER=jless
-elif [ `type -p less` ]; then
+elif [ "`type -p less`" ]; then
 	PAGER=less
 else
 	PAGER=more
@@ -118,6 +118,8 @@ export PAGER
 #+++ LANG Setting +++
 # for PERL
 PERL_BADLANG=0; export PERL_BADLANG
+
+# locale -a | grep ja_JP
 MYARCH=`uname -s`
 case $MYARCH in
 FreeBSD)
@@ -131,8 +133,8 @@ NetBSD)
 	LC_TIME=C
 	export LC_TIME
 	if [ "jless" = $PAGER ]; then
-		LANG=ja_JP.EUC
-		LC_CTYPE=ja_JP.EUC
+		LANG=ja_JP.eucJP
+		LC_CTYPE=ja_JP.eucJP
 		JLESSCHARSET=japanese
 		export LANG LC_CTYPE JLESSCHARSET
 	fi
@@ -173,12 +175,13 @@ Darwin)
 esac
 
 # perlbrew
-if [ -f ${HOME}/perl5/perlbrew/etc/bashrc ]; then
-        source ${HOME}/perl5/perlbrew/etc/bashrc
+if [ -f "${HOME}/perl5/perlbrew/etc/bashrc" ]; then
+    . "${HOME}/perl5/perlbrew/etc/bashrc"
 fi
 
 #+++ MISC +++
-if [ -f $HOME/.bash_aliases ]; then
-	source $HOME/.bash_aliases
+if [ -f "$HOME/.bash_aliases" ]; then
+    . "${HOME}/.bash_aliases"
 fi
+
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
