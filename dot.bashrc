@@ -180,6 +180,10 @@ if [ -f "${HOME}/perl5/perlbrew/etc/bashrc" ]; then
 fi
 
 #+++ MISC +++
+if [ -f "$HOME/.bashrc_by_host ]; thne
+    . "$HOME/.bashrc_by_host
+fi
+
 if [ -f "$HOME/.bash_aliases" ]; then
     . "${HOME}/.bash_aliases"
 fi
