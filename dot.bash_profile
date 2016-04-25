@@ -18,7 +18,10 @@ case $CURRENT_SYSTEM in
         echo "This is ${MACTYPE:=unknown} running with ${CURRENT_SYSTEM}/${CURRENT_MPU} $CURRENT_RELEASE."
 	  ;;
     Linux)
+        # CentOS
         if [ -f /etc/system-release ]; then DISTRIBUTION=`cat /etc/system-release` ; fi
+        # Ubuntu
+        if [ -f /etc/lsb-release ]; then source /etc/lsb-release ; DISTRIBUTION=${DISTRIB_DESCRIPTION} ; fi
         echo "This is ${CURRENT_SYSTEM}/${CURRENT_MPU} ${DISTRIBUTION:=unknown}: ${CURRENT_RELEASE}."
     ;;
     *)
