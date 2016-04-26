@@ -3,47 +3,43 @@
 # 
 
 # Path check function ##########################
-#
-ME=`whoami`
 chck_path(){
-for i in $@; do
-	case ${FOUND_PATH:-NULL} in
-	NULL)
-		if [ -d "$i" ]; then
-			 FOUND_PATH="$i"
-		fi
-	;;
-	*)
-		if [ -d $i ]; then
-			 FOUND_PATH="$FOUND_PATH:$i"
-		fi
-	;;
-	esac
-done
-echo $FOUND_PATH
+    for i in $@; do
+        case ${FOUND_PATH:-NULL} in
+        NULL)
+            if [ -d "$i" ]; then FOUND_PATH="$i"; fi
+            ;;
+        *)
+            if [ -d "$i" ]; then FOUND_PATH="$FOUND_PATH:$i"; fi
+            ;;
+        esac
+    done
+    echo $FOUND_PATH
 }
 
 #+++ Basic Settings +++
+ME=`whoami`
+HOSTNAME=`hostname -s`
+
 # information is shown in K-Blocks
 BLOCKSIZE=K; export BLOCKSIZE
 # PROMPT
 PS1="\u@\h:\W/[\!]$ "
 # Editor
 EDITOR=vi; export EDITOR
-HOSTNAME=`hostname -s`
 
 # HISTORY
 HISTTIMEFORMAT='%Y-%m-%dT%T%z '; export HISTTIMEFORMAT
+HISTCONTROL=ignoreboth; export HISTCONTROL
+HISTSIZE=100000; export HISTSIZE
 if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
-        share_history() {
-                history -a
-                history -c
-                history -r
-        }
-        PROMPT_COMMAND='share_history'
-        shopt -u histappend
-        HISTCONTROL=ignoreboth; export HISTCONTROL
-        HISTSIZE=100000; export HISTSIZE
+    share_history() {
+        history -a
+        history -c
+        history -r
+    }
+    PROMPT_COMMAND='share_history'
+    shopt -u histappend
 fi
 
 #+++ Path list +++
@@ -82,7 +78,6 @@ if [ -x /usr/bin/xcode-select ]; then
 fi
 
 MAN_PATH="/usr/local/man"
-# MAN_PATH="$MAN_PATH /usr/local/man/ja"
 MAN_PATH="$MAN_PATH $HOME/man"
 MAN_PATH="$MAN_PATH /usr/local/lib/perl5/*/man"
 MAN_PATH="$MAN_PATH /usr/local/atalk/man"
@@ -107,11 +102,11 @@ export MANPATH
 
 #+++ PAGER +++
 if [ "`type -p jless`" ]; then
-	PAGER=jless
+  PAGER=jless
 elif [ "`type -p less`" ]; then
-	PAGER=less
+  PAGER=less
 else
-	PAGER=more
+  PAGER=more
 fi
 export PAGER
 
@@ -120,72 +115,60 @@ export PAGER
 PERL_BADLANG=0; export PERL_BADLANG
 
 # locale -a | grep ja_JP
+LC_TIME=C; export LC_TIME
 MYARCH=`uname -s`
 case $MYARCH in
-FreeBSD)
-	LANG=ja_JP.UTF-8
-	LC_CTYPE=ja_JP.UTF-8
-	LC_TIME=C
-	export LANG LC_CTYPE LC_TIME
-	;;
-NetBSD)
-	CPUTYPE=`uname -m`
-	LC_TIME=C
-	export LC_TIME
-	if [ "jless" = $PAGER ]; then
-		LANG=ja_JP.UTF-8
-		LC_CTYPE=ja_JP.UTF-8
-		JLESSCHARSET=japanese
-		export LANG LC_CTYPE JLESSCHARSET
-	fi
-	if [ "mac68k" = $CPUTYPE ]; then
-		if ! [ "vt220" = $TERM ]; then
-			TERM=vt220
-			export TERM
-		fi
-	fi
+    FreeBSD)
+        LANG=ja_JP.UTF-8
+        LC_CTYPE=ja_JP.UTF-8
+        export LANG LC_CTYPE
+        ;;
+    NetBSD)
+        CPUTYPE=`uname -m`
+        if [ "jless" = $PAGER ]; then
+            LANG=ja_JP.UTF-8
+            LC_CTYPE=ja_JP.UTF-8
+            JLESSCHARSET=japanese
+            export LANG LC_CTYPE JLESSCHARSET
+        fi
+        if [ "mac68k" = $CPUTYPE ]; then
+            if ! [ "vt220" = $TERM ]; then
+                TERM=vt220; export TERM
+            fi
+        fi
         export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/local/lib/pkgconfig
-	;;
-Linux)
-	LC_CTYPE=ja_JP.utf8
-        LC_TIME=C
+        ;;
+    Linux)
+        LC_CTYPE=ja_JP.utf8
         LANG=ja_JP.utf8
         LESSCHARSET=utf-8
-        export LANG
-        export LC_TIME
-        export LC_CTYPE
-        export LESSCHARSET
-	;;
-Darwin)
-	if ! [ "vt100" = $TERM ]; then
-		TERM=vt100
-		export TERM
-	fi
-	LANG=ja_JP.UTF-8
-	LC_CTYPE=ja_JP.UTF-8
-	LESSCHARSET=utf-8
-	LC_TIME=C
-        export LANG
-        export LC_CTYPE
-        export LC_TIME
-	export LESSCHARSET
-	;;
-*)
-	;;
+        export LANG LESSCHARSET LC_CTYPE
+        ;;
+    Darwin)
+#       if ! [ "vt100" = $TERM ]; then
+#           TERM=vt100; export TERM
+#       fi
+        LANG=ja_JP.UTF-8
+        LC_CTYPE=ja_JP.UTF-8
+        LESSCHARSET=utf-8
+        export LANG LC_CTYPE LESSCHARSET
+        ;;
+    *)
+        ;;
 esac
 
 # perlbrew
 if [ -f "${HOME}/perl5/perlbrew/etc/bashrc" ]; then
-    . "${HOME}/perl5/perlbrew/etc/bashrc"
+  . "${HOME}/perl5/perlbrew/etc/bashrc"
 fi
 
 #+++ MISC +++
 if [ -f "$HOME/.bashrc_by_host" ]; then
-    . "$HOME/.bashrc_by_host"
+  . "$HOME/.bashrc_by_host"
 fi
 
 if [ -f "$HOME/.bash_aliases" ]; then
-    . "${HOME}/.bash_aliases"
+  . "${HOME}/.bash_aliases"
 fi
 
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
