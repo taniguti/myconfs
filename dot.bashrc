@@ -162,6 +162,21 @@ if [ -f "${HOME}/perl5/perlbrew/etc/bashrc" ]; then
   . "${HOME}/perl5/perlbrew/etc/bashrc"
 fi
 
+# ssh-agent with screen
+# http://www.gcd.org/blog/2006/09/100/
+sshagent="${HOME}/.ssh/.sshagent"
+if [ -S "$SSH_AUTH_SOCK" ]; then
+    case "$SSH_AUTH_SOCK" in
+        /tmp/*/agent.[0-9]* )
+            ln -snf "$SSH_AUTH_SOCK" "$sshagent" && export SSH_AUTH_SOCK="$sshagent"
+            ;;
+        *)
+            ;;
+    esac
+elif [ -S "$sshagent" ]; then
+    export SSH_AUTH_SOCK="sshagent"
+fi
+
 #+++ MISC +++
 if [ -f "$HOME/.bashrc_by_host" ]; then
   . "$HOME/.bashrc_by_host"
