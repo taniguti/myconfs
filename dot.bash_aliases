@@ -62,7 +62,7 @@ alias reboot='sync;sync;sync;sudo reboot'
 alias shibuya='curl wttr.in/tokyo'
 alias getgip='curl http://ifconfig.me'
 
-if [ "jless" = $PAGER ];then
+if [ "jless" = ${PAGER:=x} ];then
     alias less='jless'
 elif [ "more" = $PAGER ];then
     alias less='more'
