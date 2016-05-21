@@ -30,8 +30,8 @@ EDITOR=vi; export EDITOR
 
 # HISTORY
 HISTTIMEFORMAT='%Y-%m-%dT%T%z '; export HISTTIMEFORMAT
-HISTCONTROL=ignoreboth; export HISTCONTROL
-HISTSIZE=100000; export HISTSIZE
+HISTSIZE=10000; export HISTSIZE
+# HISTCONTROL=ignoreboth; export HISTCONTROL
 if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
     share_history() {
         history -a
