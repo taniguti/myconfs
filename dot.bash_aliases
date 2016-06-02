@@ -60,7 +60,7 @@ alias j='jobs'
 alias halt='sync;sync;sync;sudo shutdown -h now'
 alias reboot='sync;sync;sync;sudo reboot'
 alias shibuya='curl wttr.in/tokyo'
-alias getgip='curl http://ifconfig.me'
+alias getgip='curl http://ifconfig.moe'
 
 if [ "jless" = ${PAGER:=x} ];then
     alias less='jless'
