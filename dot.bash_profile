@@ -19,7 +19,7 @@ case $CURRENT_SYSTEM in
 	  ;;
     Linux)
         if [ -f /etc/issue ]; then DISTRIBUTION=`head -1 /etc/issue` ; fi
-        echo "This is ${CURRENT_SYSTEM}/${CURRENT_MPU} ${DISTRIBUTION:=unknown}: ${CURRENT_RELEASE}."
+        echo "This is ${CURRENT_SYSTEM}/${CURRENT_MPU} ${DISTRIBUTION:=unknown}: ${CURRENT_RELEASE:=unknown}."
     ;;
     *)
         echo "This is a ${CURRENT_MPU}-unknown-${CURRENT_SYSTEM} $CURRENT_RELEASE system."
@@ -27,10 +27,4 @@ case $CURRENT_SYSTEM in
 esac
 
 if [ -x /usr/games/fortune ]; then fortune -s ; fi
-
-# SSH Setting
-if [ "${SSH_CLIENT:-X}" = "X" -a -f "$HOME/.bash_sshagent" ]; then
-    . "$HOME/.bash_sshagent"
-fi
-
 echo ""
