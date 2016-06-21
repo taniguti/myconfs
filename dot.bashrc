@@ -164,6 +164,13 @@ if [ -f "${HOME}/perl5/perlbrew/etc/bashrc" ]; then
   . "${HOME}/perl5/perlbrew/etc/bashrc"
 fi
 
+# ssh-agent for sierra
+if [ ${TERM_PROGRAM:-X} = Apple_Terminal ]; then
+    if [ `uname -r | awk -F . '{print $1}'` -gt 16 ]; then
+        ssh-add -A 2> /dev/null
+    fi
+fi
+
 # ssh-agent with screen
 # http://www.gcd.org/blog/2006/09/100/
 HOSTNAME=`hostname -s`
