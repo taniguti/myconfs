@@ -108,6 +108,10 @@ if [ "`type -p vim`" ]; then
     alias vi=vim
 fi
 
+if [ "`type -p sudo`" ]; then
+    alias sudo='sudo -H'
+fi
+
 if [ -f ${HOME}/.bash_aliases_by_host ]; then
     . ${HOME}/.bash_aliases_by_host
 fi
