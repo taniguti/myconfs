@@ -17,12 +17,12 @@ case ${HOSTTYPE} in
         alias ssh-add='ssh-add -K'
         alias top='top -u'
         ;;
-	NetBSD)
+    NetBSD)
         alias ls='ls -aFCh'
         alias df='df -k'
         alias du='du -k'
         ;;
-	Linux)
+    Linux)
         alias ls='ls --color=tty --show-control-char -aFCh'
         ;;
     *)
