@@ -104,6 +104,10 @@ if [ "`type -p strace`" ]; then
     alias strace='strace -s 1024 -t'
 fi
 
+if [ "type -p vim" ]; then
+    alias vi=vim
+fi
+
 if [ -f ${HOME}/.bash_aliases_by_host ]; then
     . ${HOME}/.bash_aliases_by_host
 fi
