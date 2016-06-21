@@ -166,7 +166,7 @@ fi
 
 # ssh-agent for sierra
 if [ ${TERM_PROGRAM:-X} = Apple_Terminal ]; then
-    if [ `uname -r | awk -F . '{print $1}'` -gt 16 ]; then
+    if [ `uname -r | awk -F . '{print $1}'` -ge 16 ]; then
         ssh-add -A 2> /dev/null
     fi
 fi
