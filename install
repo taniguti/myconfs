@@ -1,0 +1,12 @@
+#!/bin/sh
+
+cd $(dirname $0)
+PATH_TO_CONF="$PWD"
+
+for i in .bash_profile .bashrc .bash_aliases .bash_logout .inputrc .screenrc .vimrc
+do
+    if [ -f "${PATH_TO_CONF}/dot$i" ]; then 
+        rm -f $HOME/$i
+        ln -s "${PATH_TO_CONF}/dot$i" $HOME/$i
+    fi
+done
