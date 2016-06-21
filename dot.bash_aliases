@@ -104,7 +104,7 @@ if [ "`type -p strace`" ]; then
     alias strace='strace -s 1024 -t'
 fi
 
-if [ "type -p vim" ]; then
+if [ "`type -p vim`" ]; then
     alias vi=vim
 fi
 
