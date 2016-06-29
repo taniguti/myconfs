@@ -73,9 +73,11 @@ CMD_PATH="$CMD_PATH /Applications/Server.app/Contents/ServerRoot/usr/bin"
 CMD_PATH="$CMD_PATH /Applications/Server.app/Contents/ServerRoot/usr/sbin"
 CMD_PATH="$CMD_PATH /Applications/Server.app/Contents/ServerRoot/usr/libexec"
 CMD_PATH="$CMD_PATH /Applications/Server.app/Contents/ServerRoot/System/Library/ServerSetup"
-XCODE_PATH=`/usr/bin/xcode-select -p` 2> /dev/null
-if [ ${XCODE_PATH:-X} != 'X' ]; then
-    CMD_PATH="$CMD_PATH ${XCODE_PATH}/usr/bin"
+if [ -x /usr/bin/xcode-select ]; then
+    XCODE_PATH=`/usr/bin/xcode-select -p` 2> /dev/null
+    if [ ${XCODE_PATH:-X} != 'X' ]; then
+        CMD_PATH="$CMD_PATH ${XCODE_PATH}/usr/bin"
+    fi
 fi
 
 MAN_PATH="/usr/local/man"
