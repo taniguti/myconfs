@@ -26,5 +26,5 @@ case $CURRENT_SYSTEM in
     ;;
 esac
 
-if [ -x /usr/games/fortune ]; then fortune -s ; fi
+if [ "`type -p fortune`" ]; then fortune -s ; fi
 echo ""
