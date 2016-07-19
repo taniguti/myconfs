@@ -62,7 +62,7 @@ alias reboot='sync;sync;sync;sudo reboot'
 alias shibuya='curl wttr.in/tokyo'
 alias getgip='curl http://ifconfig.moe'
 alias perlck='perl -Mstrict -Mwarnings -wc'
-alias tcpdump='tcpdump -s0 -X -vv'
+alias tcpdump='sudo tcpdump -s0 -X -vv'
 
 if [ "jless" = ${PAGER:=x} ];then
     alias less='jless'
