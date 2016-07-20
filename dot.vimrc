@@ -11,7 +11,7 @@ set title
 set showmatch
 
 "コードの色分け
-"syntax on
+syntax on
 
 "インデントをスペース4つ分に設定
 set shiftwidth=4
@@ -21,13 +21,13 @@ set tabstop=4
 set expandtab
 
 "新しい行を作った時に高度な自動インデントを行う
-set smarttab
+"set smarttab
 
 " 改行時に前の行のインデントを継続する
-set autoindent
+" set autoindent
 
-" 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
-set smartindent
+" 改行時に入力された行の末尾に合わせて次の行のインデントを増減する 
+" set smartindent
 
 " カーソル行の背景色を変える
 set cursorline
