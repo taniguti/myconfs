@@ -39,6 +39,6 @@ set incsearch
 set wrapscan
 
 set encoding=utf8
-set fileencodings=iso-2022-jp,sjis,utf8,euc-jp
+set fileencodings=utf8,iso-2022-jp,sjis,euc-jp
 set fileformats=unix,dos
 autocmd FileType * setlocal formatoptions-=ro
