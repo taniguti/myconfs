@@ -7,6 +7,7 @@ CURRENT_RELEASE=`uname -r`
 CURRENT_MPU=`uname -m`
 
 if [ -x /sw/bin/init.sh ]; then . /sw/bin/init.sh ; fi
+if [ -f ~/.bash_profle_by_host ]; . ~/.bash_profle_by_host ; fi
 if [ -f ~/.bashrc ]; then . ~/.bashrc ; fi
 
 case $CURRENT_SYSTEM in
