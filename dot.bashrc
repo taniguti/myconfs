@@ -73,6 +73,7 @@ CMD_PATH="$CMD_PATH /Applications/Server.app/Contents/ServerRoot/usr/bin"
 CMD_PATH="$CMD_PATH /Applications/Server.app/Contents/ServerRoot/usr/sbin"
 CMD_PATH="$CMD_PATH /Applications/Server.app/Contents/ServerRoot/usr/libexec"
 CMD_PATH="$CMD_PATH /Applications/Server.app/Contents/ServerRoot/System/Library/ServerSetup"
+CMD_PATH="$CMD_PATH /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources"
 if [ -x /usr/bin/xcode-select ]; then
     if [ `sw_vers -productVersion | awk -F. '{print $2}'` -gt 8 ]; then
         XCODE_PATH=`/usr/bin/xcode-select -p` 2> /dev/null
