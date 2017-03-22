@@ -45,6 +45,9 @@ if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
         }
         PROMPT_COMMAND='share_history'
         shopt -u histappend
+        tail -n $HISTSIZE "${HOME}/.bash_history" > "${HOME}/.bash_history.$$"
+        cat "${HOME}/.bash_history.$$" > "${HOME}/.bash_history" 
+        rm "${HOME}/.bash_history.$$"
     fi
 fi
 
