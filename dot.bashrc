@@ -29,17 +29,23 @@ PS1="\u@\h:\W/[\!]$ "
 EDITOR=vi; export EDITOR
 
 # HISTORY
-HISTTIMEFORMAT='%Y-%m-%dT%T%z '; export HISTTIMEFORMAT
-HISTSIZE=10000; export HISTSIZE
+if [ "${HISTTIMEFORMAT:-X}" = X ]; then
+    HISTTIMEFORMAT='%Y-%m-%dT%T%z '; export HISTTIMEFORMAT
+fi
+if [ ${HISTSIZE:-1000} -le 10000 ]; then
+    HISTSIZE=10000; export HISTSIZE
+fi
 # HISTCONTROL=ignoreboth; export HISTCONTROL
 if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
-    share_history() {
-        history -a
-        history -c
-        history -r
-    }
-    PROMPT_COMMAND='share_history'
-    shopt -u histappend
+    if [ "$PROMPT_COMMAND"X = X ]; then
+        share_history() {
+            history -a
+            history -c
+            history -r
+        }
+        PROMPT_COMMAND='share_history'
+        shopt -u histappend
+    fi
 fi
 
 #+++ Path list +++
