@@ -32,7 +32,7 @@ EDITOR=vi; export EDITOR
 if [ "${HISTTIMEFORMAT:-X}" = X ]; then
     HISTTIMEFORMAT='%Y-%m-%dT%T%z '; export HISTTIMEFORMAT
 fi
-if [ ${HISTSIZE:-1000} -le 10000 ]; then
+if [ ${HISTSIZE:-10000} -le 10000 ]; then
     HISTSIZE=10000; export HISTSIZE
 fi
 # HISTCONTROL=ignoreboth; export HISTCONTROL
@@ -45,9 +45,14 @@ if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
         }
         PROMPT_COMMAND='share_history'
         shopt -u histappend
-        tail -n $HISTSIZE "${HOME}/.bash_history" > "${HOME}/.bash_history.$$"
-        cat "${HOME}/.bash_history.$$" > "${HOME}/.bash_history" 
-        rm "${HOME}/.bash_history.$$"
+        if [ ! -s "$HOME/.bash_history" ]; then
+            echo 'history' > "$HOME/.bash_history"
+            chmod 600 "$HOME/.bash_history"
+        else
+            tail -n $HISTSIZE "${HOME}/.bash_history" > "${HOME}/.bash_history.$$"
+            cat "${HOME}/.bash_history.$$" > "${HOME}/.bash_history"
+            rm "${HOME}/.bash_history.$$"
+        fi
     fi
 fi
 
