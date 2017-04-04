@@ -38,6 +38,9 @@ set incsearch
 "検索時に最後まで行ったら最初に戻る
 set wrapscan
 
+" 行番号を表示
+set number
+
 set encoding=utf8
 set fileencodings=utf8,iso-2022-jp,sjis,euc-jp
 set fileformats=unix,dos
