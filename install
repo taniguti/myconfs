@@ -10,3 +10,11 @@ do
         ln -s "${PATH_TO_CONF}/dot$i" $HOME/$i
     fi
 done
+
+if [ -x /usr/bin/lesskey ]; then
+    if [ -f "${PATH_TO_CONF}/dot.lesskey" ]; then
+        rm -f "$HOME/.lesskey"
+        ln -s "${PATH_TO_CONF}/dot.lesskey" "$HOME/.lesskey"
+        /usr/bin/lesskey
+    fi
+fi
