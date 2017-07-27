@@ -126,6 +126,8 @@ if [ "`type -p jless`" ]; then
   PAGER=jless
 elif [ "`type -p less`" ]; then
   PAGER=less
+  PERLDOC_PAGER='less -r'
+  export PERLDOC_PAGER
 else
   PAGER=more
 fi
