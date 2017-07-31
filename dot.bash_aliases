@@ -63,6 +63,7 @@ alias shibuya='curl wttr.in/tokyo'
 alias perlck='perl -Mstrict -Mwarnings -wc'
 alias tcpdump='sudo tcpdump -s0 -X -vv'
 alias getgip='curl -L --retry 3 --retry-max-time 10 http://ifconfig.me/ip'
+alias less='less -R'
 
 if [ "jless" = ${PAGER:=x} ];then
     alias less='jless'
