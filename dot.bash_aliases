@@ -16,7 +16,7 @@ case ${HOSTTYPE} in
         alias ssh-add='ssh-add -K'
         alias top='top -u'
         if [ `/usr/bin/fdesetup status | head -1 | awk '$NF == "On." {print NR}'` -eq 1 ]; then
-            alias reboot="/usr/bin/fdesetup authrestart"
+            alias reboot="sync;sync;sync;sudo /usr/bin/fdesetup authrestart"
         fi
         ;;
     NetBSD)
