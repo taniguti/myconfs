@@ -12,10 +12,12 @@ case ${HOSTTYPE} in
         alias ls='ls -ahFCv'
         alias df='df -h'
         alias du='du -h'
-        alias refreshmail='/usr/bin/sqlite3 ~/Library/Mail/Envelope\ Index vacuum'
         alias kinit='kinit --renewable'
         alias ssh-add='ssh-add -K'
         alias top='top -u'
+        if [ `/usr/bin/fdesetup status | head -1 | awk '$NF == "On." {print NR}'` -eq 1 ]; then
+            alias reboot="/usr/bin/fdesetup authrestart"
+        fi
         ;;
     NetBSD)
         alias ls='ls -aFCh'
@@ -59,7 +61,6 @@ alias bye='exit'
 alias where='type -a'
 alias j='jobs'
 alias halt='sync;sync;sync;sudo shutdown -h now'
-alias reboot='sync;sync;sync;sudo reboot'
 alias shibuya='curl wttr.in/tokyo'
 alias perlck='perl -Mstrict -Mwarnings -wc'
 alias tcpdump='sudo tcpdump -s0 -X -vv'
