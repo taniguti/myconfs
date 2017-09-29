@@ -15,7 +15,7 @@ case ${HOSTTYPE} in
         alias kinit='kinit --renewable'
         alias ssh-add='ssh-add -K'
         alias top='top -u'
-        if [ `/usr/bin/fdesetup status | head -1 | awk '$NF == "On." {print NR}'` -eq 1 ]; then
+        if [ "`/usr/bin/fdesetup status | head -1 | awk '$NF == "On." {print NR}'`"X = 1X ]; then
             alias reboot="sync;sync;sync;sudo /usr/bin/fdesetup authrestart"
         fi
         ;;
