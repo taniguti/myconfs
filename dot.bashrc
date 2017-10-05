@@ -222,4 +222,8 @@ if [ -f "$HOME/.bash_aliases" ]; then
   . "${HOME}/.bash_aliases"
 fi
 
+if [ -f "$HOME/.git-completion.bash" ]; then
+    . "$HOME/.git-completion.bash"
+fi
+
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH

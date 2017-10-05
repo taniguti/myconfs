@@ -18,3 +18,8 @@ if [ -x /usr/bin/lesskey ]; then
         /usr/bin/lesskey
     fi
 fi
+
+if [ ! -f "${HOME}/.git-completion.bash" ]; then
+    curl -s --output "${HOME}/.git-completion.bash" https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+    chmod 644 "${HOME}/.git-completion.bash"
+fi
