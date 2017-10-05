@@ -222,7 +222,7 @@ if [ -f "$HOME/.bash_aliases" ]; then
   . "${HOME}/.bash_aliases"
 fi
 
-if [ -f "$HOME/.git-completion.bash" ]; then
+if [ -f "$HOME/.git-completion.bash" ] && [ "`type -p git`" ]; then
     . "$HOME/.git-completion.bash"
 fi
 
