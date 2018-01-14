@@ -23,6 +23,7 @@ case ${HOSTTYPE} in
         alias ls='ls -aFCh'
         alias df='df -k'
         alias du='du -k'
+        alias halt='halt -p'
         ;;
     Linux)
         alias ls='ls --color=tty --show-control-char -aFCh'
@@ -60,7 +61,6 @@ alias h='history'
 alias bye='exit'
 alias where='type -a'
 alias j='jobs'
-alias halt='sync;sync;sync;sudo shutdown -h now'
 alias shibuya='curl wttr.in/tokyo'
 alias perlck='perl -Mstrict -Mwarnings -wc'
 alias tcpdump='sudo tcpdump -s0 -X -vv'
