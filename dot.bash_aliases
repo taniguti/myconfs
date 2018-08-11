@@ -18,6 +18,9 @@ case ${HOSTTYPE} in
         if [ "`/usr/bin/fdesetup status | head -1 | awk '$NF == "On." {print NR}'`"X = 1X ]; then
             alias reboot="sync;sync;sync;sudo /usr/bin/fdesetup authrestart"
         fi
+        if [ -f ${HOME}/.ssh/mypass ]; then
+            alias mypass='cat ${HOME}/.ssh/mypass | pbcopy'
+        fi
         ;;
     NetBSD)
         alias ls='ls -aFCh'
