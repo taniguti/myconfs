@@ -56,8 +56,14 @@ if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
     fi
 fi
 
+HOMEBREW_PREFIX=$HOME/homebrew
+if [ -d "$HOMEBREW_PREFIX" ]; then
+    export HOMEBREW_PREFIX
+#   export HOMEBREW_NO_ANALYTICS=1
+fi
+
 #+++ Path list +++
-CMD_PATH="$HOME/bin $HOME/sbin"
+CMD_PATH="$HOME/bin $HOME/sbin $HOMEBREW_PREFIX/bin"
 CMD_PATH="$CMD_PATH $HOME/hoi.tools"
 CMD_PATH="$CMD_PATH $HOME/bin/${MACHTYPE}-${VENDOR}-${OSTYPE}"
 CMD_PATH="$CMD_PATH /usr/local/bin /usr/local/sbin"
