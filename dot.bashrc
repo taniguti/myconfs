@@ -234,7 +234,7 @@ fi
 
 if [ -f "$HOMEBREW_PREFIX/completions/bash/brew" ]; then
     . "$HOMEBREW_PREFIX/completions/bash/brew"
-elfi [ -f /usr/local/Homebrew/completions/bash/brew ]; then
+elif [ -f /usr/local/Homebrew/completions/bash/brew ]; then
     . /usr/local/Homebrew/completions/bash/brew
 fi
 
