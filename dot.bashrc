@@ -232,4 +232,10 @@ if [ -f "$HOME/.git-completion.bash" ] && [ "`type -p git`" ]; then
     . "$HOME/.git-completion.bash"
 fi
 
+if [ -f "$HOMEBREW_PREFIX/completions/bash/brew" ]; then
+    . "$HOMEBREW_PREFIX/completions/bash/brew"
+elfi [ -f /usr/local/Homebrew/completions/bash/brew ]; then
+    . /usr/local/Homebrew/completions/bash/brew
+fi
+
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
