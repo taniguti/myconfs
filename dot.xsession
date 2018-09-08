@@ -1,5 +1,5 @@
 # Window Maker default X session startup script 
-# 
+#
 
 PATH="$PATH:/usr/X11R6/bin"
 
@@ -7,7 +7,7 @@ PATH="$PATH:/usr/X11R6/bin"
 # in the console window.
 #
 tail -f /home/hoi/.xsession-errors > /dev/console &
-if [ `type -p ssh-agent` ]; then 
+if [ `type -P ssh-agent` ]; then
 	eval `ssh-agent`
 	ssh-add  $HOME/.ssh/id_dsa
 fi

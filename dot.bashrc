@@ -1,6 +1,6 @@
 #
 # dot.bashrc
-# 
+#
 
 # Path check function ##########################
 chck_path(){
@@ -128,9 +128,9 @@ export PATH
 export MANPATH
 
 #+++ PAGER +++
-if [ "`type -p jless`" ]; then
+if [ "`type -P jless`" ]; then
   PAGER=jless
-elif [ "`type -p less`" ]; then
+elif [ "`type -P less`" ]; then
   PAGER=less
   PERLDOC_PAGER='less -Ris'
   export PERLDOC_PAGER
@@ -228,7 +228,7 @@ if [ -f "$HOME/.bash_aliases" ]; then
   . "${HOME}/.bash_aliases"
 fi
 
-if [ -f "$HOME/.git-completion.bash" ] && [ "`type -p git`" ]; then
+if [ -f "$HOME/.git-completion.bash" ] && [ "`type -P git`" ]; then
     . "$HOME/.git-completion.bash"
 fi
 

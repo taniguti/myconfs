@@ -32,7 +32,7 @@ case ${HOSTTYPE} in
         alias ls='ls --color=tty --show-control-char -aFCh'
         ;;
     *)
-        if [ "`type -p ja-ls`" ]; then
+        if [ "`type -P ja-ls`" ]; then
             alias ls='ja-ls -aFEC'
         else
             alias ls='ls -aFCh'
@@ -76,47 +76,47 @@ elif [ "more" = $PAGER ];then
     alias less='more'
 fi
 
-if [ "`type -p jman`" ]; then
+if [ "`type -P jman`" ]; then
     alias man='jman'
 fi
 
-if [ "`type -p gzcat`" ]; then
+if [ "`type -P gzcat`" ]; then
     alias zcat='gzcat'
 fi
 
-if [ "`type -p svstat`" -a  "`type -p sudo`" ]; then
+if [ "`type -P svstat`" -a  "`type -P sudo`" ]; then
     alias svstat='sudo svstat'
 fi
 
-if [ "`type -p svc`" -a  "`type -p sudo`" ]; then
+if [ "`type -P svc`" -a  "`type -P sudo`" ]; then
 	alias	 svc='sudo svc'
 fi
 
-if [ "`type -p gmake`" ]; then
+if [ "`type -P gmake`" ]; then
 	alias	 make='gmake'
 fi
 
-if [ "`type -p gtar`" ]; then
+if [ "`type -P gtar`" ]; then
 	alias	 tar='gtar'
 fi
 
-if [ "`type -p jvim`" ]; then
+if [ "`type -P jvim`" ]; then
 	alias	 vi=jvim
 fi
 
-if [ "`type -p gpatch`" ]; then
+if [ "`type -P gpatch`" ]; then
 	alias	 patch=gpatch
 fi
 
-if [ "`type -p strace`" ]; then
+if [ "`type -P strace`" ]; then
     alias strace='strace -s 1024 -t'
 fi
 
-if [ "`type -p vim`" ]; then
+if [ "`type -P vim`" ]; then
     alias vi=vim
 fi
 
-if [ "`type -p sudo`" ]; then
+if [ "`type -P sudo`" ]; then
     alias sudo='sudo -H'
 fi
 
