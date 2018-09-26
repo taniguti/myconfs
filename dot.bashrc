@@ -64,7 +64,6 @@ fi
 
 #+++ Path list +++
 CMD_PATH="$HOME/bin $HOME/sbin $HOMEBREW_PREFIX/bin"
-CMD_PATH="$CMD_PATH $HOME/hoi.tools"
 CMD_PATH="$CMD_PATH $HOME/bin/${MACHTYPE}-${VENDOR}-${OSTYPE}"
 CMD_PATH="$CMD_PATH /usr/local/bin /usr/local/sbin"
 CMD_PATH="$CMD_PATH /usr/local/munki"
@@ -78,6 +77,7 @@ CMD_PATH="$CMD_PATH /bin /sbin"
 CMD_PATH="$CMD_PATH /usr/X11R6/bin /usr/X11R6/sbin"
 CMD_PATH="$CMD_PATH /sw/bin /sw/sbin"
 CMD_PATH="$CMD_PATH /usr/games"
+CMD_PATH="$CMD_PATH /snap/bin"
 CMD_PATH="$CMD_PATH /var/qmail/bin"
 CMD_PATH="$CMD_PATH /usr/local/pgsql/bin /usr/local/pgsql/sbin"
 CMD_PATH="$CMD_PATH /usr/local/squid/bin /usr/local/squid/sbin"
