@@ -64,7 +64,6 @@ fi
 
 #+++ Path list +++
 CMD_PATH="$HOME/bin $HOME/sbin $HOMEBREW_PREFIX/bin"
-CMD_PATH="$CMD_PATH $HOME/bin/${MACHTYPE}-${VENDOR}-${OSTYPE}"
 CMD_PATH="$CMD_PATH /usr/local/bin /usr/local/sbin"
 CMD_PATH="$CMD_PATH /usr/local/munki"
 CMD_PATH="$CMD_PATH /usr/pkg/bin /usr/pkg/sbin"
@@ -86,8 +85,6 @@ CMD_PATH="$CMD_PATH /usr/local/apache/bin /usr/local/apache/sbin"
 CMD_PATH="$CMD_PATH /usr/local/samba/bin /usr/local/samba/sbin"
 CMD_PATH="$CMD_PATH /usr/local/git/bin /usr/local/git/sbin"
 CMD_PATH="$CMD_PATH /Developer/Tools"
-CMD_PATH="$CMD_PATH $HOME/autowork/bin"
-CMD_PATH="$CMD_PATH $HOME/autowork/sbin"
 CMD_PATH="$CMD_PATH /System/Library/ServerSetup"
 CMD_PATH="$CMD_PATH /Applications/Server.app/Contents/ServerRoot/usr/bin"
 CMD_PATH="$CMD_PATH /Applications/Server.app/Contents/ServerRoot/usr/sbin"
