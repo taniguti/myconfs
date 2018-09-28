@@ -3,7 +3,7 @@
 cd $(dirname $0)
 PATH_TO_CONF="$PWD"
 
-for i in .bash_profile .bashrc .bash_aliases .bash_logout .inputrc .screenrc .vimrc
+for i in .bash_profile .bashrc .bash_aliases .bash_logout .inputrc .screenrc .vimrc .tmux.conf
 do
     if [ -f "${PATH_TO_CONF}/dot$i" ]; then 
         rm -f $HOME/$i
