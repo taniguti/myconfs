@@ -15,7 +15,7 @@ case $CURRENT_SYSTEM in
         : use /etc/motd.
         ;;
     Darwin)
-        MACTYPE=`system_profiler SPHardwareDataType | awk '$2 == "Identifier:" {print $3}'`
+        MACTYPE=`system_profiler SPHardwareDataType 2> /dev/null | awk '$2 == "Identifier:" {print $3}'`
         echo "This is ${MACTYPE:=unknown} running with ${CURRENT_SYSTEM}/${CURRENT_MPU} $CURRENT_RELEASE."
 	    ;;
     Linux)
