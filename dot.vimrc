@@ -45,3 +45,6 @@ set encoding=utf8
 set fileencodings=utf8,iso-2022-jp,sjis,euc-jp
 set fileformats=unix,dos
 autocmd FileType * setlocal formatoptions-=ro
+
+" 自動的に行末の空白を削除
+autocmd BufWritePre * :%s/\s\+$//ge
