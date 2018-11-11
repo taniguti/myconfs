@@ -240,5 +240,10 @@ if [ -f "$HOMEBREW_PREFIX/completions/bash/brew" ]; then
 elif [ -f /usr/local/Homebrew/completions/bash/brew ]; then
     . /usr/local/Homebrew/completions/bash/brew
 fi
+if [ -f "${HOMEBREW_PREFIX}/etc/bash_completion" ]; then
+    . "${HOMEBREW_PREFIX}/etc/bash_completion"
+elif [ -f "/usr/local/etc/bash_completion" ]; then
+    . "/usr/local/etc/bash_completion"
+fi
 
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
