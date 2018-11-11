@@ -57,7 +57,6 @@ if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
 fi
 
 # HOMEBREW
-HOMEBREW_PREFIX=$HOME/homebrew
 if [ -d $HOME/homebrew ]; then
     HOMEBREW_PREFIX=$HOME/homebrew
     export HOMEBREW_PREFIX
@@ -66,6 +65,8 @@ elif [ -d $HOME/usr/local ]; then
     HOMEBREW_PREFIX=$HOME/usr/local
     export HOMEBREW_PREFIX
 #   export HOMEBREW_NO_ANALYTICS=1
+else
+    HOMEBREW_PREFIX=/nowhere
 fi
 
 #+++ Path list +++
