@@ -1,20 +1,18 @@
 #!/bin/sh
 
-cd $(dirname $0)
+cd "$(dirname $0)"
 PATH_TO_CONF="$PWD"
 
 for i in .bash_profile .bashrc .bash_aliases .bash_logout .inputrc .screenrc .vimrc .tmux.conf
 do
     if [ -f "${PATH_TO_CONF}/dot$i" ]; then
-        rm -f $HOME/$i
-        ln -s "${PATH_TO_CONF}/dot$i" $HOME/$i
+        ln -fs "${PATH_TO_CONF}/dot$i" $HOME/$i
     fi
 done
 
 if [ -x /usr/bin/lesskey ]; then
     if [ -f "${PATH_TO_CONF}/dot.lesskey" ]; then
-        rm -f "$HOME/.lesskey"
-        ln -s "${PATH_TO_CONF}/dot.lesskey" "$HOME/.lesskey"
+        ln -fs "${PATH_TO_CONF}/dot.lesskey" "$HOME/.lesskey"
         /usr/bin/lesskey
     fi
 fi
