@@ -9,7 +9,7 @@ alias al='alias'
 
 case ${HOSTTYPE} in
     Darwin)
-        alias ls='ls -ahFCv'
+        alias ls='ls -ahFGCv'
         alias df='df -h'
         alias du='du -h'
         alias kinit='kinit --renewable'
