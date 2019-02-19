@@ -9,6 +9,7 @@ alias al='alias'
 
 case ${HOSTTYPE} in
     Darwin)
+        alias cp='cp -aivc'
         alias ls='ls -ahFGCv'
         alias df='df -h'
         alias du='du -h'
@@ -27,6 +28,7 @@ case ${HOSTTYPE} in
         alias df='df -k'
         alias du='du -k'
         alias halt='halt -p'
+        alias cp='cp -aiv'
         ;;
     Linux)
         alias ls='ls --color=tty --show-control-char -aFCh'
@@ -39,6 +41,7 @@ case ${HOSTTYPE} in
         fi
         alias df='df -k'
         alias du='du -k'
+        alias cp='cp -aiv'
         ;;
 esac
 
@@ -50,7 +53,6 @@ alias lle='ll -e'
 alias mv='mv -vi'
 alias rm='rm -vi'
 alias rmf='rm -vrf'
-alias cp='cp -aiv'
 alias diff='diff -Npru'
 alias back='cd -'
 alias clr='clear'
