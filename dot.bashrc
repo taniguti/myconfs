@@ -181,10 +181,12 @@ case $MYARCH in
 #       if ! [ "vt100" = $TERM ]; then
 #           TERM=vt100; export TERM
 #       fi
+        CLICOLOR=1
+        LSCOLORS=DxGxcxdxCxegedabagacad
         LANG=ja_JP.UTF-8
         LC_CTYPE=ja_JP.UTF-8
         LESSCHARSET=utf-8
-        export LANG LC_CTYPE LESSCHARSET
+        export LANG LC_CTYPE LESSCHARSET CLICOLOR LSCOLORS
         ;;
     *)
         ;;
