@@ -44,7 +44,7 @@ case ${HOSTTYPE} in
         alias cp='cp -aiv'
         ;;
 esac
-
+alias reset-term='stty sane'
 alias ll='ls -ohlh'
 alias lld='ll -dh'
 alias llt='ll -t'
