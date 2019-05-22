@@ -26,7 +26,7 @@ set expandtab
 " 改行時に前の行のインデントを継続する
 " set autoindent
 
-" 改行時に入力された行の末尾に合わせて次の行のインデントを増減する 
+" 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 " set smartindent
 
 " カーソル行の背景色を変える
@@ -44,6 +44,10 @@ set number
 set encoding=utf8
 set fileencodings=utf8,iso-2022-jp,sjis,euc-jp
 set fileformats=unix,dos
+
+" https://nanasi.jp/articles/howto/file/modeline.html
+set modeline
+
 autocmd FileType * setlocal formatoptions-=ro
 
 " 自動的に行末の空白を削除
