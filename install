@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 cd "$(dirname $0)"
 PATH_TO_CONF="$PWD"
@@ -21,3 +21,5 @@ if [ ! -f "${HOME}/.git-completion.bash" ]; then
     curl -s --output "${HOME}/.git-completion.bash" https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
     chmod 644 "${HOME}/.git-completion.bash"
 fi
+
+# vim: set ts=4 sw=4 sts=0 et ft=sh fenc=utf-8 ff=unix :
