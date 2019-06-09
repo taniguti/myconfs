@@ -116,6 +116,10 @@ if [ "$( type -P sudo )" ]; then
     alias sudo='sudo -H'
 fi
 
+if [ "$HOSTNAME" = xmini ]; then
+    alias postalias='sudo /usr/sbin/postalias -c /usr/local/etc/postfix aliases'
+fi
+
 if [ -f ${HOME}/.bash_aliases_by_host ]; then
     . ${HOME}/.bash_aliases_by_host
 fi
