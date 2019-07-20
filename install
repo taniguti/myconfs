@@ -1,9 +1,27 @@
 #!/bin/bash
 
+shellType="$1"
+
 cd "$(dirname $0)"
 PATH_TO_CONF="$PWD"
 
-for i in .bash_profile .bashrc .bash_aliases .bash_logout .inputrc .screenrc .vimrc .tmux.conf
+CommonFiles=".inputrc .screenrc .vimrc .tmux.conf"
+bashFiles=".bash_profile .bashrc .bash_aliases .bash_logout"
+zshFiles=".zshrc .zsh_aliases"
+
+case "${shellType:-none}" in
+    bash )
+        rcFiles="$CommonFiles $bashFiles"
+        ;;
+    zsh )
+        rcFiles="$CommonFiles $zshFiles"
+        ;;
+    * )
+        rcFiles="$CommonFiles $zshFiles $bashFiles"
+        ;;
+esac
+
+for i in $rcFiles
 do
     if [ -f "${PATH_TO_CONF}/dot$i" ]; then
         ln -fs "${PATH_TO_CONF}/dot$i" $HOME/$i
