@@ -2,7 +2,7 @@
 
 shellType="$1"
 
-cd "$(dirname $0)"
+cd "$( dirname "$0" )" || exit 1
 PATH_TO_CONF="$PWD"
 
 CommonFiles=".inputrc .screenrc .vimrc .tmux.conf"
@@ -24,7 +24,7 @@ esac
 for i in $rcFiles
 do
     if [ -f "${PATH_TO_CONF}/dot$i" ]; then
-        ln -fs "${PATH_TO_CONF}/dot$i" $HOME/$i
+        ln -fs "${PATH_TO_CONF}/dot$i" "$HOME/$i"
     fi
 done
 
