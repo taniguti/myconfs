@@ -5,19 +5,33 @@ shellType="$1"
 cd "$( dirname "$0" )" || exit 1
 PATH_TO_CONF="$PWD"
 
-CommonFiles=".inputrc .screenrc .vimrc .tmux.conf"
-bashFiles=".bash_profile .bashrc .bash_aliases .bash_logout"
+CommonFiles=".systeminfo .screenrc .vimrc .tmux.conf"
+bashFiles=".bash_profile .bashrc .bash_aliases .bash_logout .inputrc"
 zshFiles=".zshrc .zsh_aliases"
+
+function get-git-completion(){
+    SHELL="$1"
+    if [ ! -f "${HOME}/.git-completion.${SHELL}" ]; then
+        curl -s --output "${HOME}/.git-completion.${SHELL}" \
+            https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${SHELL}
+        chmod 644 "${HOME}/.git-completion.${SHELL}"
+    fi
+}
+
+
 
 case "${shellType:-none}" in
     bash )
         rcFiles="$CommonFiles $bashFiles"
+        get-git-completion bash
         ;;
     zsh )
         rcFiles="$CommonFiles $zshFiles"
+        get-git-completion zsh
         ;;
     * )
-        rcFiles="$CommonFiles $zshFiles $bashFiles"
+        echo "type $0 bash|zsh"
+        exit 0
         ;;
 esac
 
@@ -35,9 +49,5 @@ if [ -x /usr/bin/lesskey ]; then
     fi
 fi
 
-if [ ! -f "${HOME}/.git-completion.bash" ]; then
-    curl -s --output "${HOME}/.git-completion.bash" https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-    chmod 644 "${HOME}/.git-completion.bash"
-fi
 
 # vim: set ts=4 sw=4 sts=0 et ft=sh fenc=utf-8 ff=unix :

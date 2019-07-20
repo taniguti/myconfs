@@ -15,6 +15,7 @@ SAVEHIST=1000000
 setopt share_history
 
 # Command aliases
-if [ "$HOME/.zsh_aliases" ]; then
-    .  "$HOME/.zsh_aliases"
-fi
+if [ "$HOME/.zsh_aliases" ]; then . "$HOME/.zsh_aliases" ; fi
+
+# Show system info
+if [ "$HOME/.systeminfo" ]; then . "$HOME/.systeminfo" ; fi
