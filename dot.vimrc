@@ -47,6 +47,7 @@ set fileformats=unix,dos
 
 " https://nanasi.jp/articles/howto/file/modeline.html
 set modeline
+set modelines=5
 
 autocmd FileType * setlocal formatoptions-=ro
 
