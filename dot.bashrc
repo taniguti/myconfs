@@ -62,13 +62,13 @@ if [ -d $HOME/homebrew ]; then
     HOMEBREW_PREFIX=$HOME/homebrew
     export HOMEBREW_PREFIX
     export HOMEBREW_NO_ANALYTICS=1
-    export HOMEBREW_NO_INSECURE_REDIRECT=1
+#    export HOMEBREW_NO_INSECURE_REDIRECT=1
     export HOMEBREW_CASK_OPTS="--require-sha --appdir=/Applications"
 elif [ -d $HOME/usr/local ]; then
     HOMEBREW_PREFIX=$HOME/usr/local
     export HOMEBREW_PREFIX
     export HOMEBREW_NO_ANALYTICS=1
-    export HOMEBREW_NO_INSECURE_REDIRECT=1
+#    export HOMEBREW_NO_INSECURE_REDIRECT=1
     export HOMEBREW_CASK_OPTS="--require-sha --appdir=/Applications"
 else
     HOMEBREW_PREFIX=/nowhere
