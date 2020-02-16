@@ -33,7 +33,7 @@ if [ "${HISTTIMEFORMAT:-X}" = X ]; then
     HISTTIMEFORMAT='%Y-%m-%dT%T%z '; export HISTTIMEFORMAT
 fi
 if [ ${HISTSIZE:-10000} -le 10000 ]; then
-    HISTSIZE=10000; export HISTSIZE
+    HISTSIZE=100000; export HISTSIZE
 fi
 # HISTCONTROL=ignoreboth; export HISTCONTROL
 if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
