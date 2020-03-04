@@ -32,28 +32,42 @@ EDITOR=vi; export EDITOR
 if [ "${HISTTIMEFORMAT:-X}" = X ]; then
     HISTTIMEFORMAT='%Y-%m-%dT%T%z '; export HISTTIMEFORMAT
 fi
-if [ ${HISTSIZE:-10000} -le 10000 ]; then
+
+if [ ${HISTSIZE:-10000} -le 100000 ]; then
     HISTSIZE=100000; export HISTSIZE
+    HISTFILESIZE=100000; export HISTFILESIZE
 fi
+
 # HISTCONTROL=ignoreboth; export HISTCONTROL
 if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
-    if [ "$PROMPT_COMMAND"X = X ]; then
-        share_history() {
-            history -a
-            history -c
-            history -r
-        }
-        PROMPT_COMMAND='share_history'
-        shopt -u histappend
-        if [ ! -s "$HOME/.bash_history" ]; then
-            echo 'history' > "$HOME/.bash_history"
-            chmod 600 "$HOME/.bash_history"
-        else
-            tail -n $HISTSIZE "${HOME}/.bash_history" > "${HOME}/.bash_history.$$"
-            cat "${HOME}/.bash_history.$$" > "${HOME}/.bash_history"
-            rm "${HOME}/.bash_history.$$"
-        fi
+
+    share_history() {
+        history -a
+        history -c
+        history -r
+    }
+
+    case "$PROMPT_COMMAND" in
+        *share_history*)
+            : nothing
+            ;;
+        *)
+            PROMPT_COMMAND="${PROMPT_COMMAND:+${PROMPT_COMMAND};} share_history"
+            export PROMPT_COMMAND
+            ;;
+    esac
+
+    shopt -u histappend
+
+    if [ ! -s "$HOME/.bash_history" ]; then
+        echo 'history' > "$HOME/.bash_history"
+        chmod 600 "$HOME/.bash_history"
+    else
+        tail -n $HISTSIZE "${HOME}/.bash_history" > "${HOME}/.bash_history.$$"
+        cat "${HOME}/.bash_history.$$" > "${HOME}/.bash_history"
+        rm "${HOME}/.bash_history.$$"
     fi
+
 fi
 
 # HOMEBREW
