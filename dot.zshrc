@@ -53,6 +53,21 @@ setopt -o nomatch
 export PATH="$CPATH"
 typeset -gU PATH
 
+if [ -f "$HOME/.git-completion.zsh" ] && [ "$( command -v git)" ]; then
+    source "$HOME/.git-completion.zsh"
+fi
+
+#if [ -f "$HOMEBREW_PREFIX/completions/zsh/brew" ]; then
+#    source "$HOMEBREW_PREFIX/completions/zsh/brew"
+#elif [ -f /usr/local/Homebrew/completions/zsh/brew ]; then
+#    source /usr/local/Homebrew/completions/zsh/brew
+#fi
+#if [ -f "${HOMEBREW_PREFIX}/etc/zsh_completion" ]; then
+#    source "${HOMEBREW_PREFIX}/etc/zsh_completion"
+#elif [ -f "/usr/local/etc/zsh_completion" ]; then
+#    source "/usr/local/etc/zsh_completion"
+#fi
+
 # Command aliases
 if [ -f "$HOME/.zsh_aliases" ]; then . "$HOME/.zsh_aliases" ; fi
 
