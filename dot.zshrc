@@ -5,7 +5,7 @@ autoload -Uz compinit && compinit
 setopt auto_list
 setopt auto_menu
 setopt auto_cd
-
+autoload -Uz compinit && compinit
 zstyle ':completion:*:default' menu select=1
 
 export LANG=ja_JP.UTF-8
@@ -53,8 +53,10 @@ setopt -o nomatch
 export PATH="$CPATH"
 typeset -gU PATH
 
-if [ -f "$HOME/.git-completion.zsh" ] && [ "$( command -v git)" ]; then
-    source "$HOME/.git-completion.zsh"
+if [ -f "$HOME/.zsh/git-completion.zsh" ] && [ "$( command -v git)" ]; then
+    zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.zsh
+    fpath=(~/.zsh $fpath)
+    autoload -Uz compinit && compinit
 fi
 
 #if [ -f "$HOMEBREW_PREFIX/completions/zsh/brew" ]; then

@@ -11,9 +11,20 @@ function get-git-completion(){
     if [ -f "${HOME}/.git-completion.${loginshell}" ]; then
         rm -f "${HOME}/.git-completion.${loginshell}"
     fi
-    curl -s --output "${HOME}/.git-completion.${loginshell}" \
-        "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${loginshell}"
-    chmod 644 "${HOME}/.git-completion.${loginshell}"
+    case "$loginshell" in
+        bash )
+            curl -s --output "${HOME}/.git-completion.${loginshell}" \
+                "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${loginshell}"
+            chmod 644 "${HOME}/.git-completion.${loginshell}"
+            ;;
+        zsh )
+            mkdir -p "${HOME}/.zsh"
+            chmod 700 "${HOME}/.zsh"
+            curl -s --output "${HOME}/.zsh/git-completion.${loginshell}" \
+                "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${loginshell}"
+            chmod 644 "${HOME}/.zsh/git-completion.${loginshell}"
+            ;;
+    esac
 }
 
 shellType="$1"
@@ -40,6 +51,9 @@ esac
 for i in $rcFiles
 do
     if [ -e "${PATH_TO_CONF}/dot$i" ]; then
+        if [ -h "${HOME}/$i" ]; then
+            rm -f "${HOME}/$i"
+        fi
         ln -fs "${PATH_TO_CONF}/dot$i" "$HOME/$i"
     fi
 done
