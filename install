@@ -10,7 +10,7 @@ function get-git-completion(){
     loginshell="$1"
     if [ ! -f "${HOME}/.git-completion.${loginshell}" ]; then
         curl -s --output "${HOME}/.git-completion.${loginshell}" \
-            "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${loginshell}"kjjj
+            "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${loginshell}"
         chmod 644 "${HOME}/.git-completion.${loginshell}"
     fi
 }
