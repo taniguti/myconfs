@@ -1,8 +1,9 @@
 #!/bin/bash
+# vim: set ts=4 sw=4 sts=0 et ft=sh fenc=utf-8 ff=unix :
 
 commonFiles=".systeminfo .screenrc .vimrc .tmux.conf"
 bashFiles=".bash_profile .bashrc .bash_aliases .bash_logout .inputrc"
-zshFiles=".zshrc .zsh_aliases"
+zshFiles=".zshrc .zsh_aliasesi .zshrc.d"
 
 function get-git-completion(){
     local loginshell
@@ -37,7 +38,7 @@ esac
 
 for i in $rcFiles
 do
-    if [ -f "${PATH_TO_CONF}/dot$i" ]; then
+    if [ -e "${PATH_TO_CONF}/dot$i" ]; then
         ln -fs "${PATH_TO_CONF}/dot$i" "$HOME/$i"
     fi
 done
@@ -48,5 +49,3 @@ if [ -x /usr/bin/lesskey ]; then
         /usr/bin/lesskey
     fi
 fi
-
-# vim: set ts=4 sw=4 sts=0 et ft=sh fenc=utf-8 ff=unix :

@@ -1,3 +1,5 @@
+# vim: set ts=4 sw=4 sts=0 et ft=sh fenc=utf-8 ff=unix :
+
 autoload -Uz compinit && compinit
 
 setopt auto_list
@@ -14,8 +16,45 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 setopt share_history
 
+# HOMEBREW
+# See also: https://github.com/drduh/macOS-Security-and-Privacy-Guide/issues/138
+if [ -d "$HOME/homebrew" ]; then
+    HOMEBREW_PREFIX="$HOME/homebrew"
+    export HOMEBREW_PREFIX
+    export HOMEBREW_NO_ANALYTICS=1
+    export HOMEBREW_NO_INSECURE_REDIRECT=1
+    export HOMEBREW_CASK_OPTS="--require-sha --appdir=/Applications --no-quarantine"
+elif [ -d "$HOME/usr/local" ]; then
+    HOMEBREW_PREFIX="$HOME/usr/local"
+    export HOMEBREW_PREFIX
+    export HOMEBREW_NO_ANALYTICS=1
+#    export HOMEBREW_NO_INSECURE_REDIRECT=1
+    export HOMEBREW_CASK_OPTS="--require-sha --appdir=/Applications"
+else
+    HOMEBREW_PREFIX=/nowhere
+fi
+
+# Command search pathes
+setopt +o nomatch
+cat .zshrc.d/paths /etc/paths.d/* /etc/paths 2> /dev/null \
+ | grep -v ^#  \
+ | awk NF \
+ | while read -r CMDPATH
+do
+    if [ -d "$( eval echo "$CMDPATH" )" ]; then
+        if [ -z "$CPATH" ]; then
+            CPATH="$( eval echo "$CMDPATH" )"
+        else
+            CPATH="$CPATH":"$( eval echo "$CMDPATH" )"
+        fi
+    fi
+done
+setopt -o nomatch
+export PATH="$CPATH"
+typeset -gU PATH
+
 # Command aliases
-if [ "$HOME/.zsh_aliases" ]; then . "$HOME/.zsh_aliases" ; fi
+if [ -f "$HOME/.zsh_aliases" ]; then . "$HOME/.zsh_aliases" ; fi
 
 # Show system info
-if [ "$HOME/.systeminfo" ]; then . "$HOME/.systeminfo" ; fi
+if [ -f "$HOME/.systeminfo" ]; then . "$HOME/.systeminfo" ; fi
