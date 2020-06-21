@@ -13,8 +13,7 @@ if [ ! -f "$HOME/.sshagent_free" ]; then
         case "$SSH_AUTH_SOCK" in
             /tmp/*/agent.[0-9]* )
                 ln -snf "$SSH_AUTH_SOCK" "$SSHAGENT_SOCK" && export SSH_AUTH_SOCK="$SSHAGENT_SOCK"
-                touch "$SSHAGENT_SOCK_NOTE"
-                echo "$SSH_AUTH_SOCK_ORIGINAL" >> "$SSHAGENT_SOCK_NOTE"
+                echo "$SSH_AUTH_SOCK_ORIGINAL" >>| "$SSHAGENT_SOCK_NOTE"
                 ;;
             *)
                 ;;
