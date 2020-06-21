@@ -1,20 +1,15 @@
 # vim: set ts=4 sw=4 sts=0 et ft=sh fenc=utf-8 ff=unix :
 
 autoload -Uz compinit && compinit
+autoload -Uz zmv
 
 setopt auto_list
 setopt auto_menu
 setopt auto_cd
-autoload -Uz compinit && compinit
+
 zstyle ':completion:*:default' menu select=1
 
 export LANG=ja_JP.UTF-8
-
-# History
-HISTFILE="$HOME/.zsh-history"
-HISTSIZE=1000000
-SAVEHIST=1000000
-setopt share_history
 
 # HOMEBREW
 # See also: https://github.com/drduh/macOS-Security-and-Privacy-Guide/issues/138
@@ -39,13 +34,14 @@ if [ "$brewInstalled" = yes ]; then
 fi
 
 if [ -d "${HOMEBREW_PREFIX}/opt/zplug" ]; then
+    zplugInstalled=yes
     export ZPLUG_HOME="${HOMEBREW_PREFIX}/opt/zplug"
 fi
 
 # Command search pathes
 setopt +o nomatch
 cat "${HOME}/.zshrc.d/paths" /etc/paths.d/* /etc/paths 2> /dev/null \
- | grep -v ^#  \
+ | grep -v ^# \
  | awk NF \
  | while read -r CMDPATH
 do
@@ -84,3 +80,22 @@ for zrc in "${HOME}/.zshrc.d/aliases" \
 do
     if [ -f "$zrc" ]; then . "$zrc" ; fi
 done
+
+if [ "${zplugInstalled:-no}" = yes ]; then
+    zplug "modules/history", from:prezto
+    zplug "modules/directory", from:prezto
+    if [ "$( uname -s )" = Darwin ]; then
+        zplug "modules/osx", from:prezto
+    fi
+
+    if ! zplug check --verbose; then zplug install; fi
+    zplug load
+else
+    # History
+    setopt share_history
+fi
+
+# History
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=1000000
+SAVEHIST=1000000
