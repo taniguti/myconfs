@@ -3,7 +3,7 @@
 
 commonFiles=".systeminfo .screenrc .vimrc .tmux.conf"
 bashFiles=".bash_profile .bashrc .bash_aliases .bash_logout .inputrc"
-zshFiles=".zshrc .zsh_aliases .zshrc.d"
+zshFiles=".zshrc .zshrc.d .zlogin .zlogout .zprofile"
 
 function get-git-completion(){
     local loginshell
