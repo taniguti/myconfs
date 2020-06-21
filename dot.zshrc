@@ -99,3 +99,6 @@ fi
 HISTFILE="$HOME/.zsh_history"
 HISTSIZE=1000000
 SAVEHIST=1000000
+
+# Prompt
+export PS1="%n@%m:%2~[%h]%# "
