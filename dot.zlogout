@@ -1,5 +1,5 @@
 #
-# LOGOUT COMMAND FILE for BASH
+# LOGOUT COMMAND FILE for ZSH
 #
 
 if [ -f "$SSHAGENT_SOCK_NOTE" ] && [ -S "$SSH_AUTH_SOCK_ORIGINAL" ]; then
@@ -23,4 +23,4 @@ if [ -f "$SSHAGENT_SOCK_NOTE" ] && [ -S "$SSH_AUTH_SOCK_ORIGINAL" ]; then
     fi
 fi
 
-clear
+# clear

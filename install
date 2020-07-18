@@ -1,12 +1,60 @@
 #!/bin/bash
+# vim: set ts=4 sw=4 sts=0 et ft=sh fenc=utf-8 ff=unix :
 
-cd "$(dirname $0)"
+commonFiles=".systeminfo .screenrc .vimrc .tmux.conf"
+bashFiles=".bash_profile .bashrc .bash_aliases .bash_logout .inputrc"
+zshFiles=".zshrc .zshrc.d .zlogin .zlogout .zprofile"
+
+function get-git-completion(){
+    local loginshell
+    loginshell="$1"
+    if [ -f "${HOME}/.git-completion.${loginshell}" ]; then
+        rm -f "${HOME}/.git-completion.${loginshell}"
+    fi
+    case "$loginshell" in
+        bash )
+            curl -s --output "${HOME}/.git-completion.${loginshell}" \
+                "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${loginshell}"
+            chmod 644 "${HOME}/.git-completion.${loginshell}"
+            ;;
+        zsh )
+            mkdir -p "${HOME}/.zsh"
+            chmod 700 "${HOME}/.zsh"
+            curl -s --output "${HOME}/.zsh/git-completion.${loginshell}" \
+                "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${loginshell}"
+            chmod 644 "${HOME}/.zsh/git-completion.${loginshell}"
+            ;;
+    esac
+}
+
+shellType="$1"
+if [ -z "$shellType" ]; then shellType="$( basename "$SHELL" 2> /dev/null )" ; fi
+cd "$( dirname "$0" )" || exit 1
 PATH_TO_CONF="$PWD"
 
-for i in .bash_profile .bashrc .bash_aliases .bash_logout .inputrc .screenrc .vimrc .tmux.conf
+case "${shellType:-unknown}" in
+    bash )
+        rcFiles="$commonFiles $bashFiles"
+        get-git-completion bash
+        ;;
+    zsh )
+        rcFiles="$commonFiles $zshFiles"
+        get-git-completion zsh
+        ;;
+    * )
+        echo "Unknown shell: $shellType"
+        echo "type $0 bash|zsh"
+        exit 0
+        ;;
+esac
+
+for i in $rcFiles
 do
-    if [ -f "${PATH_TO_CONF}/dot$i" ]; then
-        ln -fs "${PATH_TO_CONF}/dot$i" $HOME/$i
+    if [ -e "${PATH_TO_CONF}/dot$i" ]; then
+        if [ -h "${HOME}/$i" ]; then
+            rm -f "${HOME}/$i"
+        fi
+        ln -fs "${PATH_TO_CONF}/dot$i" "$HOME/$i"
     fi
 done
 
@@ -16,10 +64,3 @@ if [ -x /usr/bin/lesskey ]; then
         /usr/bin/lesskey
     fi
 fi
-
-if [ ! -f "${HOME}/.git-completion.bash" ]; then
-    curl -s --output "${HOME}/.git-completion.bash" https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
-    chmod 644 "${HOME}/.git-completion.bash"
-fi
-
-# vim: set ts=4 sw=4 sts=0 et ft=sh fenc=utf-8 ff=unix :
