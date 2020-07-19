@@ -96,6 +96,7 @@ else
 fi
 
 # History
+# https://qiita.com/takc923/items/8409a76e8a660f9f329f
 export HISTFILE="$HOME/.zsh_history"
 export HISTSIZE=1000000
 export SAVEHIST=1000000
