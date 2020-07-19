@@ -96,9 +96,9 @@ else
 fi
 
 # History
-HISTFILE="$HOME/.zsh_history"
-HISTSIZE=1000000
-SAVEHIST=1000000
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=1000000
+export SAVEHIST=1000000
 
 # Prompt
 export PS1="%n@%m:%2~[%h]%# "
