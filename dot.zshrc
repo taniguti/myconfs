@@ -1,5 +1,6 @@
 # vim: set ts=4 sw=4 sts=0 et ft=sh fenc=utf-8 ff=unix :
 
+# workaround for "zsh compinit: insecure directories"
 alias compinit='compinit -u'
 autoload -Uz compinit && compinit
 autoload -Uz zmv
