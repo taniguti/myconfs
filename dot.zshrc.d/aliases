@@ -10,7 +10,11 @@ alias j='jobs'
 alias kinit='kinit --renewable'
 alias less='less -R'
 alias ll='ls -ohlh'
-alias ls='ls -ahFCv'
+if [ "$( uname )" = NetBSD ]; then
+    alias ls='ls -ahFC'
+else
+    alias ls='ls -ahFCv'
+fi
 alias me='whoami'
 alias mv='mv -vi'
 alias mypass='cat ${HOME}/.ssh/mypass | pbcopy'
