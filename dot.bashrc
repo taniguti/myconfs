@@ -65,7 +65,7 @@ if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
     else
         tail -n $HISTSIZE "${HOME}/.bash_history" > "${HOME}/.bash_history.$$"
         cat "${HOME}/.bash_history.$$" > "${HOME}/.bash_history"
-        rm "${HOME}/.bash_history.$$"
+        rm -f "${HOME}/.bash_history.$$"
     fi
 
 fi
@@ -169,20 +169,16 @@ PERL_BADLANG=0; export PERL_BADLANG
 
 # locale -a | grep ja_JP
 LC_TIME=C; export LC_TIME
+LANG=ja_JP.UTF-8; export LANG
+LC_CTYPE=ja_JP.UTF-8; export LC_CTYPE
 MYARCH=`uname -s`
 case $MYARCH in
-    FreeBSD)
-        LANG=ja_JP.UTF-8
-        LC_CTYPE=ja_JP.UTF-8
-        export LANG LC_CTYPE
-        ;;
     NetBSD)
         CPUTYPE=`uname -m`
         if [ "jless" = $PAGER ]; then
             LANG=ja_JP.UTF-8
             LC_CTYPE=ja_JP.UTF-8
-            JLESSCHARSET=japanese
-            export LANG LC_CTYPE JLESSCHARSET
+            JLESSCHARSET=japanese; export JLESSCHARSET
         fi
         if [ "mac68k" = $CPUTYPE ]; then
             if ! [ "vt220" = $TERM ]; then
@@ -192,10 +188,7 @@ case $MYARCH in
         export PKG_CONFIG_PATH=/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/local/lib/pkgconfig
         ;;
     Linux)
-        LC_CTYPE=ja_JP.utf8
-        LANG=ja_JP.utf8
-        LESSCHARSET=utf-8
-        export LANG LESSCHARSET LC_CTYPE
+        LESSCHARSET=utf-8; export LESSCHARSET _CTYPE
         ;;
     Darwin)
 #       if ! [ "vt100" = $TERM ]; then
@@ -203,11 +196,9 @@ case $MYARCH in
 #       fi
         CLICOLOR=1
         LSCOLORS=DxGxcxdxCxegedabagacad
-        LANG=ja_JP.UTF-8
-        LC_CTYPE=ja_JP.UTF-8
         LESSCHARSET=utf-8
         BASH_SILENCE_DEPRECATION_WARNING=1
-        export LANG LC_CTYPE LESSCHARSET CLICOLOR LSCOLORS BASH_SILENCE_DEPRECATION_WARNING
+        export LESSCHARSET CLICOLOR LSCOLORS BASH_SILENCE_DEPRECATION_WARNING
         ;;
     *)
         ;;
