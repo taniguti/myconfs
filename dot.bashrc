@@ -167,17 +167,17 @@ export PAGER
 # for PERL
 PERL_BADLANG=0; export PERL_BADLANG
 
-# locale -a | grep ja_JP
-LC_TIME=C; export LC_TIME
-LANG=ja_JP.UTF-8; export LANG
-LC_CTYPE=ja_JP.UTF-8; export LC_CTYPE
+LC_TIME=C
+LANG=ja_JP.UTF-8
+LANGUAGE="$LANG"
+LC_CTYPE="$LANG"
+export LC_TIME LANG LANGUAGE LC_CTYPE
+
 MYARCH=`uname -s`
 case $MYARCH in
     NetBSD)
         CPUTYPE=`uname -m`
         if [ "jless" = $PAGER ]; then
-            LANG=ja_JP.UTF-8
-            LC_CTYPE=ja_JP.UTF-8
             JLESSCHARSET=japanese; export JLESSCHARSET
         fi
         if [ "mac68k" = $CPUTYPE ]; then
