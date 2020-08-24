@@ -65,7 +65,7 @@ if [ ${TERM_PROGRAM:-X} != Apple_Terminal ]; then
     else
         tail -n $HISTSIZE "${HOME}/.bash_history" > "${HOME}/.bash_history.$$"
         cat "${HOME}/.bash_history.$$" > "${HOME}/.bash_history"
-        rm -f "${HOME}/.bash_history.$$"
+        \rm -f "${HOME}/.bash_history.$$"
     fi
 
 fi
