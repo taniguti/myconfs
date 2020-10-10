@@ -107,3 +107,8 @@ export SAVEHIST=1000000
 
 # Prompt
 export PS1="%n@%m:%2~[%h]%# "
+
+# AWS
+if [ -f "${HOME}/.aws/config" ] && [ -z "$AWS_CONFIG_FILE" ]; then
+    export AWS_CONFIG_FILE="${HOME}/.aws/config"
+fi

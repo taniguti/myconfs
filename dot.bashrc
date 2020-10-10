@@ -266,4 +266,8 @@ elif [ -f "/usr/local/etc/bash_completion" ]; then
     . "/usr/local/etc/bash_completion"
 fi
 
+if [ -f "${HOME}/.aws/config" ] && [ -z "$AWS_CONFIG_FILE" ]; then
+    export AWS_CONFIG_FILE="${HOME}/.aws/config"
+fi
+
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
