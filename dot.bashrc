@@ -235,6 +235,11 @@ if [ ! -f "$HOME/.sshagent_free" ]; then
     elif [ -S "$SSHAGENT_SOCK" ]; then
         export SSH_AUTH_SOCK="$SSHAGENT_SOCK"
     fi
+else
+    if [ ! -e "$SSH_AUTH_SOCK" ]; then
+        sfile="$( stat -c %n /tmp/ssh-*/* | head -1 )"
+        export SSH_AUTH_SOCK="$sfile"
+    fi
 fi
 
 #+++ MISC +++
