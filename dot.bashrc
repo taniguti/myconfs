@@ -270,4 +270,8 @@ if [ -f "${HOME}/.aws/config" ] && [ -z "$AWS_CONFIG_FILE" ]; then
     export AWS_CONFIG_FILE="${HOME}/.aws/config"
 fi
 
+if [ -f "${HOME}/.aws/credentials" ] && [ -z "$AWS_SHARED_CREDENTIALS_FILE" ]; then
+    export AWS_SHARED_CREDENTIALS_FILE="${HOME}/.aws/credentials"
+fi
+
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
