@@ -276,8 +276,17 @@ if [ -f "${HOME}/.aws/credentials" ] && [ -z "$AWS_SHARED_CREDENTIALS_FILE" ]; t
 fi
 
 # Utilities
-if [ -n "$( command -v peco )" ]; then
+IS_INTERACTIVE=no
+case $- in
+    *i* )
+        IS_INTERACTIVE=yes
+        ;;
+esac
+export IS_INTERACTIVE
+
+if [ -n "$( command -v peco )" ] && [ "$IS_INTERACTIVE" = yes ]; then
     function _get_ssh_host(){
+        local h="$(
         grep 'Host ' "$HOME/.ssh/config" \
             | grep -v "^#" \
             | tr '| ' '\n' \
@@ -286,6 +295,9 @@ if [ -n "$( command -v peco )" ]; then
             | grep -v 'Host' \
             | awk NF \
             | peco
+        )"
+        READLINE_LINE="${READLINE_LINE:0:$READLINE_POINT}${h}${READLINE_LINE:$READLINE_POINT}"
+        READLINE_POINT=$(($READLINE_POINT + ${#h}))
     }
     bind -x '"\C-xh": _get_ssh_host'
 fi
