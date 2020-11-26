@@ -266,12 +266,28 @@ elif [ -f "/usr/local/etc/bash_completion" ]; then
     . "/usr/local/etc/bash_completion"
 fi
 
+# AWS
 if [ -f "${HOME}/.aws/config" ] && [ -z "$AWS_CONFIG_FILE" ]; then
     export AWS_CONFIG_FILE="${HOME}/.aws/config"
 fi
 
 if [ -f "${HOME}/.aws/credentials" ] && [ -z "$AWS_SHARED_CREDENTIALS_FILE" ]; then
     export AWS_SHARED_CREDENTIALS_FILE="${HOME}/.aws/credentials"
+fi
+
+# Utilities
+if [ -n "$( command -v peco )" ]; then
+    function _get_ssh_host(){
+        grep 'Host ' "$HOME/.ssh/config" \
+            | grep -v "^#" \
+            | tr '| ' '\n' \
+            | tr -d '*' \
+            | sort | uniq \
+            | grep -v 'Host' \
+            | awk NF \
+            | peco
+    }
+    bind -x '"\C-xh": _get_ssh_host'
 fi
 
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
