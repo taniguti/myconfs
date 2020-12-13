@@ -302,11 +302,4 @@ if [ -n "$( command -v peco )" ] && [ "$IS_INTERACTIVE" = yes ]; then
     bind -x '"\C-xh": _get_ssh_host'
 fi
 
-if [ -d "/usr/local/opt/readline/lib" ]; then
-  export LDFLAGS="-L/usr/local/opt/readline/lib"
-fi
-if [ -d "/usr/local/opt/readline/include" ]; then
-  export CPPFLAGS="-I/usr/local/opt/readline/include"
-fi
-
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
