@@ -15,15 +15,15 @@ export LANG=ja_JP.UTF-8
 
 # HOMEBREW
 # See also: https://github.com/drduh/macOS-Security-and-Privacy-Guide/issues/138
-if [ -x /usr/local/bin/brew ] ; then
-    brewInstalled=yes
-    export HOMEBREW_PREFIX="/usr/local"
-elif [ -x "$HOME/homebrew/bin/brew" ]; then
+if [ -x "$HOME/homebrew/bin/brew" ]; then
     brewInstalled=yes
     export HOMEBREW_PREFIX="$HOME/homebrew"
 elif [ -x "$HOME/usr/local/bin/brew" ]; then
     brewInstalled=yes
     export HOMEBREW_PREFIX="$HOME/usr/local"
+elif [ -x /usr/local/bin/brew ] ; then
+    brewInstalled=yes
+    export HOMEBREW_PREFIX="/usr/local"
 else
     brewInstalled=no
     export HOMEBREW_PREFIX=/nowhere
