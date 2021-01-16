@@ -4,6 +4,8 @@ $HOMEBREW_PREFIX/bin
 /usr/local/bin
 /usr/local/sbin
 /System/Library/CoreServices/Applications/Network Utility.app/Contents/Resources
+/usr/local/opt/python@3.8/bin
+/usr/local/opt/tcl-tk/bin
 /usr/local/munki
 /usr/pkg/bin
 /usr/pkg/sbin

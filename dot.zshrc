@@ -65,17 +65,6 @@ if [ -f "$HOME/.zsh/git-completion.zsh" ] && [ "$( command -v git)" ]; then
     autoload -Uz compinit && compinit
 fi
 
-#if [ -f "$HOMEBREW_PREFIX/completions/zsh/brew" ]; then
-#    source "$HOMEBREW_PREFIX/completions/zsh/brew"
-#elif [ -f /usr/local/Homebrew/completions/zsh/brew ]; then
-#    source /usr/local/Homebrew/completions/zsh/brew
-#fi
-#if [ -f "${HOMEBREW_PREFIX}/etc/zsh_completion" ]; then
-#    source "${HOMEBREW_PREFIX}/etc/zsh_completion"
-#elif [ -f "/usr/local/etc/zsh_completion" ]; then
-#    source "/usr/local/etc/zsh_completion"
-#fi
-
 # Additional rcs
 for zrc in "${HOME}/.zshrc.d/aliases" \
            "${HOME}/.zshrc.d/aliases_by_host" \
@@ -114,5 +103,5 @@ if [ -f "${HOME}/.aws/config" ] && [ -z "$AWS_CONFIG_FILE" ]; then
 fi
 
 if [ -f "${HOME}/.aws/credentials" ] && [ -z "$AWS_SHARED_CREDENTIALS_FILE" ]; then
-export AWS_SHARED_CREDENTIALS_FILE="${HOME}/.aws/credentials"
+    export AWS_SHARED_CREDENTIALS_FILE="${HOME}/.aws/credentials"
 fi
