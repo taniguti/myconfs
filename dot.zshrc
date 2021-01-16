@@ -12,6 +12,7 @@ setopt auto_cd
 zstyle ':completion:*:default' menu select=1
 
 export LANG=ja_JP.UTF-8
+export LC_TIME=C
 
 # HOMEBREW
 # See also: https://github.com/drduh/macOS-Security-and-Privacy-Guide/issues/138
