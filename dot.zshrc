@@ -100,8 +100,8 @@ export PS1="%n@%m:%2~[%h]%# "
 
 # color設定
 # http://neko-mac.blogspot.com/2015/03/mac_18.html
-export LSCOLORS=Fxgxcxdxbxegedabagacad
-zstyle ':completion:*' list-colors di=35 ln=36 ex=31
+export LSCOLORS=DxGxcxdxBxegedabagacad
+zstyle ':completion:*' list-colors di=33 ln=36 ex=31
 zstyle ':completion:*:kill:*' list-colors \
    '=(#b) #([0-9]#)*( *[a-z])*=34=31=33'
 
