@@ -98,6 +98,17 @@ export SAVEHIST=1000000
 # Prompt
 export PS1="%n@%m:%2~[%h]%# "
 
+# color設定
+# http://neko-mac.blogspot.com/2015/03/mac_18.html
+export LSCOLORS=Fxgxcxdxbxegedabagacad
+zstyle ':completion:*' list-colors di=35 ln=36 ex=31
+zstyle ':completion:*:kill:*' list-colors \
+   '=(#b) #([0-9]#)*( *[a-z])*=34=31=33'
+
+# 一覧表示の形式設定
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:descriptions' format '%BCompleting%b %U%d%u'
+
 # AWS
 if [ -f "${HOME}/.aws/config" ] && [ -z "$AWS_CONFIG_FILE" ]; then
     export AWS_CONFIG_FILE="${HOME}/.aws/config"

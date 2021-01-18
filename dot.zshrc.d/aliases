@@ -13,7 +13,7 @@ alias ll='ls -ohlh'
 if [ "$( uname )" = NetBSD ]; then
     alias ls='ls -ahFC'
 else
-    alias ls='ls -ahFCv'
+    alias ls='ls -ahFCvG'
 fi
 alias me='whoami'
 alias mv='mv -vi'
