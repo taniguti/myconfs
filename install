@@ -5,6 +5,11 @@ commonFiles=".systeminfo .screenrc .vimrc .tmux.conf"
 bashFiles=".bash_profile .bashrc .bash_aliases .bash_logout .inputrc"
 zshFiles=".zshrc .zshrc.d .zlogin .zlogout .zprofile"
 
+gnurcs=".colorrc"
+if [ "$( uname -s )" = Linux ]; then
+    commonFiles="$commonFiles $gnurcs"
+fi
+
 function get-git-completion(){
     local loginshell
     loginshell="$1"

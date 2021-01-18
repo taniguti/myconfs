@@ -31,7 +31,12 @@ case ${HOSTTYPE} in
         alias cp='cp -aiv'
         ;;
     Linux)
-        alias ls='ls --color=tty --show-control-char -aFCh'
+        if [ -e "$HOME/.colorrc" ]; then
+            eval $( dircolors -b "$HOME/.colorrc" )
+            alias ls='ls --color=auto --show-control-char -aFCh'
+        else
+            alias ls='ls --color=tty --show-control-char -aFCh'
+        fi
         ;;
     *)
         if [ "$( type -P ja-ls )" ]; then
