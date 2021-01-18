@@ -32,6 +32,12 @@ set expandtab
 " カーソル行の背景色を変える
 set cursorline
 
+" Colorscheme (colo)
+" :colorscheme: 現在設定表示
+" :colorscheme tab name: colorschemeを設定
+" :colorscheme <ctrl-d>: 候補一覧表示
+colorscheme murphy
+
 "インクリメンタルサーチを行う
 set incsearch
 
