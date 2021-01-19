@@ -5,11 +5,6 @@ commonFiles=".systeminfo .screenrc .vimrc .tmux.conf"
 bashFiles=".bash_profile .bashrc .bash_aliases .bash_logout .inputrc"
 zshFiles=".zshrc .zshrc.d .zlogin .zlogout .zprofile"
 
-gnurcs=".colorrc"
-if [ "$( uname -s )" = Linux ]; then
-    commonFiles="$commonFiles $gnurcs"
-fi
-
 function get-git-completion(){
     local loginshell
     loginshell="$1"
@@ -68,4 +63,12 @@ if [ -x /usr/bin/lesskey ]; then
         ln -fs "${PATH_TO_CONF}/dot.lesskey" "$HOME/.lesskey"
         /usr/bin/lesskey
     fi
+fi
+
+if [ -x /usr/bin/dircolors ]; then
+    if [ -e "$HOME/.colorrc" ]; then
+        rm -f "$HOME/.colorrc"
+    fi
+    dircolors -p | grep -v 'DIR' > "$HOME/.colorrc"
+    echo 'DIR 01;33 # directory' >> "$HOME/.colorrc"
 fi
