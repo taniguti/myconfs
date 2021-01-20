@@ -66,9 +66,7 @@ if [ -x /usr/bin/lesskey ]; then
 fi
 
 if [ -x /usr/bin/dircolors ]; then
-    if [ -e "$HOME/.colorrc" ]; then
-        rm -f "$HOME/.colorrc"
-    fi
+    rm -f "$HOME/.colorrc"
     dircolors -p | grep -v 'DIR' > "$HOME/.colorrc"
     echo 'DIR 01;33 # directory' >> "$HOME/.colorrc"
 fi
