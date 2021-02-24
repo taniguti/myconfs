@@ -33,7 +33,8 @@ fi
 if [ "$brewInstalled" = yes ]; then
     export HOMEBREW_NO_ANALYTICS=1
     export HOMEBREW_NO_INSECURE_REDIRECT=1
-    export HOMEBREW_CASK_OPTS="--require-sha --appdir=/Applications --no-quarantine"
+    #export HOMEBREW_CASK_OPTS="--require-sha --appdir=/Applications --no-quarantine"
+    export HOMEBREW_CASK_OPTS="--appdir=/Applications --no-quarantine"
 fi
 
 if [ -d "${HOMEBREW_PREFIX}/opt/zplug" ]; then
