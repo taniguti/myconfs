@@ -1,4 +1,5 @@
 set nocompatible
+filetype on
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " http://qiita.com/fl04t/items/57ebb0fe8009d00c8499
@@ -14,11 +15,16 @@ set showmatch
 syntax on
 
 "インデントをスペース4つ分に設定
+" https://yu8mada.com/2018/08/26/i-ll-explain-vim-s-5-tab-and-space-related-somewhat-complicated-options-as-simply-as-possible/
 set shiftwidth=4
 set tabstop=4
+autocmd FileType yaml   setlocal shiftwidth=2 tabstop=2
+autocmd FileType python setlocal shiftwidth=2 tabstop=2
+autocmd FileType ruby   setlocal shiftwidth=2 tabstop=2
 
 "タブの代わりに空白文字を指定する
 set expandtab
+autocmd FileType make setlocal noexpandtab
 
 "新しい行を作った時に高度な自動インデントを行う
 "set smarttab

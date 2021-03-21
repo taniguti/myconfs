@@ -35,6 +35,6 @@ alias sudo='sudo -H'
 alias tcpdump='sudo tcpdump -s0 -X -vv'
 alias top='top -u'
 alias uchg='chflags uchg'
-alias vi='vim'
+if command -v 'vim' > /dev/null 2>&1 ; then alias vi='vim' ;fi
 alias z='suspend'
 alias zcat='gzcat'
