@@ -67,6 +67,10 @@ if [ -f "$HOME/.zsh/git-completion.zsh" ] && [ "$( command -v git)" ]; then
     autoload -Uz compinit && compinit
 fi
 
+if command -v gh > /dev/null 2>&1 ; then
+    eval "$(gh completion -s zsh)"
+fi
+
 # Additional rcs
 for zrc in "${HOME}/.zshrc.d/aliases" \
            "${HOME}/.zshrc.d/aliases_by_host" \
