@@ -25,6 +25,9 @@ elif [ -x "$HOME/usr/local/bin/brew" ]; then
 elif [ -x /usr/local/bin/brew ] ; then
     brewInstalled=yes
     export HOMEBREW_PREFIX="/usr/local"
+elif [ -x /opt/homebrew/bin/brew ] ; then
+    brewInstalled=yes
+    export HOMEBREW_PREFIX="/opt/homebrew"
 else
     brewInstalled=no
     export HOMEBREW_PREFIX=/nowhere
