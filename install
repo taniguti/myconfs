@@ -5,71 +5,70 @@ commonFiles=".systeminfo .screenrc .vimrc .tmux.conf"
 bashFiles=".bash_profile .bashrc .bash_aliases .bash_logout .inputrc"
 zshFiles=".zshrc .zshrc.d .zlogin .zlogout .zprofile"
 
-function get-git-completion(){
-    local loginshell
-    loginshell="$1"
-    if [ -f "${HOME}/.git-completion.${loginshell}" ]; then
-        rm -f "${HOME}/.git-completion.${loginshell}"
-    fi
-    case "$loginshell" in
-        bash )
-            curl -s --output "${HOME}/.git-completion.${loginshell}" \
-                "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${loginshell}"
-            chmod 644 "${HOME}/.git-completion.${loginshell}"
-            ;;
-        zsh )
-            mkdir -p "${HOME}/.zsh"
-            chmod 700 "${HOME}/.zsh"
-            curl -s --output "${HOME}/.zsh/git-completion.${loginshell}" \
-                "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${loginshell}"
-            chmod 644 "${HOME}/.zsh/git-completion.${loginshell}"
-            ;;
-    esac
+function get-git-completion() {
+  local loginshell
+  loginshell="$1"
+  if [ -f "${HOME}/.git-completion.${loginshell}" ]; then
+    rm -f "${HOME}/.git-completion.${loginshell}"
+  fi
+  case "$loginshell" in
+  bash)
+    curl -s --output "${HOME}/.git-completion.${loginshell}" \
+      "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${loginshell}"
+    chmod 644 "${HOME}/.git-completion.${loginshell}"
+    ;;
+  zsh)
+    mkdir -p "${HOME}/.zsh"
+    chmod 700 "${HOME}/.zsh"
+    curl -s --output "${HOME}/.zsh/git-completion.${loginshell}" \
+      "https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.${loginshell}"
+    chmod 644 "${HOME}/.zsh/git-completion.${loginshell}"
+    ;;
+  esac
 }
 
 shellType="$1"
-if [ -z "$shellType" ]; then shellType="$( basename "$SHELL" 2> /dev/null )" ; fi
-cd "$( dirname "$0" )" || exit 1
+if [ -z "$shellType" ]; then shellType="$(basename "$SHELL" 2>/dev/null)"; fi
+cd "$(dirname "$0")" || exit 1
 PATH_TO_CONF="$PWD"
 
 case "${shellType:-unknown}" in
-    bash )
-        rcFiles="$commonFiles $bashFiles"
-        get-git-completion bash
-        ;;
-    zsh )
-        rcFiles="$commonFiles $zshFiles"
-        get-git-completion zsh
-        ;;
-    * )
-        echo "Unknown shell: $shellType"
-        echo "type $0 bash|zsh"
-        exit 0
-        ;;
+bash)
+  rcFiles="$commonFiles $bashFiles"
+  get-git-completion bash
+  ;;
+zsh)
+  rcFiles="$commonFiles $zshFiles"
+  get-git-completion zsh
+  ;;
+*)
+  echo "Unknown shell: $shellType"
+  echo "type $0 bash|zsh"
+  exit 0
+  ;;
 esac
 
-for i in $rcFiles
-do
-    if [ -e "${PATH_TO_CONF}/dot$i" ]; then
-        if [ -h "${HOME}/$i" ]; then
-            rm -f "${HOME}/$i"
-        fi
-        ln -fs "${PATH_TO_CONF}/dot$i" "$HOME/$i"
+for i in $rcFiles; do
+  if [ -e "${PATH_TO_CONF}/dot$i" ]; then
+    if [ -h "${HOME}/$i" ]; then
+      rm -f "${HOME}/$i"
     fi
+    ln -fs "${PATH_TO_CONF}/dot$i" "$HOME/$i"
+  fi
 done
 
 if [ -x /usr/bin/lesskey ]; then
-    if [ -f "${PATH_TO_CONF}/dot.lesskey" ]; then
-        ln -fs "${PATH_TO_CONF}/dot.lesskey" "$HOME/.lesskey"
-        /usr/bin/lesskey
-    fi
+  if [ -f "${PATH_TO_CONF}/dot.lesskey" ]; then
+    ln -fs "${PATH_TO_CONF}/dot.lesskey" "$HOME/.lesskey"
+    /usr/bin/lesskey
+  fi
 fi
 
 if [ -x /usr/bin/dircolors ]; then
-    rm -f "$HOME/.colorrc"
-    dircolors -p | grep -v -e 'DIR' -e 'MULTIHARDLINK' > "$HOME/.colorrc"
-    echo 'DIR 01;33 # directory' >> "$HOME/.colorrc"
-    echo 'MULTIHARDLINK 07 # regular file with more than one link' >>  "$HOME/.colorrc"
+  rm -f "$HOME/.colorrc"
+  dircolors -p | grep -v -e 'DIR' -e 'MULTIHARDLINK' >"$HOME/.colorrc"
+  echo 'DIR 01;33 # directory' >>"$HOME/.colorrc"
+  echo 'MULTIHARDLINK 07 # regular file with more than one link' >>"$HOME/.colorrc"
 fi
 
 mkdir -p "${HOME}/.tmp"
