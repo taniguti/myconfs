@@ -71,3 +71,6 @@ if [ -x /usr/bin/dircolors ]; then
     echo 'DIR 01;33 # directory' >> "$HOME/.colorrc"
     echo 'MULTIHARDLINK 07 # regular file with more than one link' >>  "$HOME/.colorrc"
 fi
+
+mkdir -p "${HOME}/.tmp"
+chmod 700 "${HOME}/.tmp"
