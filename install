@@ -1,5 +1,5 @@
 #!/bin/bash
-# vim: set ts=4 sw=4 sts=0 et ft=sh fenc=utf-8 ff=unix :
+# vim: set ts=2 sw=2 sts=0 et ft=sh fenc=utf-8 ff=unix :
 
 commonFiles=".systeminfo .screenrc .vimrc .tmux.conf"
 bashFiles=".bash_profile .bashrc .bash_aliases .bash_logout .inputrc"
