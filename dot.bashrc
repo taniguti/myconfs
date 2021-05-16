@@ -266,6 +266,10 @@ elif [ -f "/usr/local/etc/bash_completion" ]; then
     . "/usr/local/etc/bash_completion"
 fi
 
+if command -v gh > /dev/null 2>&1; then
+    eval "$(gh completion -s bash)"
+fi
+
 # AWS
 if [ -f "${HOME}/.aws/config" ] && [ -z "$AWS_CONFIG_FILE" ]; then
     export AWS_CONFIG_FILE="${HOME}/.aws/config"

@@ -25,6 +25,9 @@ elif [ -x "$HOME/usr/local/bin/brew" ]; then
 elif [ -x /usr/local/bin/brew ] ; then
     brewInstalled=yes
     export HOMEBREW_PREFIX="/usr/local"
+elif [ -x /opt/homebrew/bin/brew ] ; then
+    brewInstalled=yes
+    export HOMEBREW_PREFIX="/opt/homebrew"
 else
     brewInstalled=no
     export HOMEBREW_PREFIX=/nowhere
@@ -65,6 +68,10 @@ if [ -f "$HOME/.zsh/git-completion.zsh" ] && [ "$( command -v git)" ]; then
     zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.zsh
     fpath=(~/.zsh $fpath)
     autoload -Uz compinit && compinit
+fi
+
+if command -v gh > /dev/null 2>&1 ; then
+    eval "$(gh completion -s zsh)"
 fi
 
 # Additional rcs
