@@ -78,6 +78,7 @@ alias getgip='curl -L --retry 3 --retry-max-time 10 http://ifconfig.moe/ip'
 alias less='less -R'
 alias ssh='ssh -C'
 alias scp='scp -C'
+alias shfmt='shfmt -bn -ci -kp'
 
 if [ "jless" = ${PAGER:=x} ];then
     alias less='jless'

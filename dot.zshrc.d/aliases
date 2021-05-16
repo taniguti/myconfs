@@ -38,3 +38,4 @@ alias uchg='chflags uchg'
 if command -v 'vim' > /dev/null 2>&1 ; then alias vi='vim' ;fi
 alias z='suspend'
 alias zcat='gzcat'
+alias shfmt='shfmt -bn -ci -kp'
