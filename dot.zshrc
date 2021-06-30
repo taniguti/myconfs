@@ -70,6 +70,11 @@ if [ -f "$HOME/.zsh/git-completion.zsh" ] && [ "$( command -v git)" ]; then
     autoload -Uz compinit && compinit
 fi
 
+if [ -d "${HOMEBREW_PREFIX}/site-functions" ]; then
+    fpath=("${HOMEBREW_PREFIX}/site-functions" $fpath)
+    autoload -Uz compinit && compinit
+fi
+
 if command -v gh > /dev/null 2>&1 ; then
     eval "$(gh completion -s zsh)"
 fi
