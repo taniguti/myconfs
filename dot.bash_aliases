@@ -2,8 +2,8 @@
 # COMMAND ALIAS FILE for BASH
 #
 
-HOSTTYPE=$( uname -s )
-HOSTNAME=$( hostname -s )
+HOSTTYPE=$(uname -s)
+HOSTNAME=$(hostname -s)
 
 alias al='alias'
 
@@ -16,7 +16,7 @@ case ${HOSTTYPE} in
         alias kinit='kinit --renewable'
         alias ssh-add='ssh-add -K'
         alias top='top -u'
-        if [ "$( /usr/bin/fdesetup status | head -1 | awk '$NF == "On." {print NR}' )"X = 1X ]; then
+        if [ "$(/usr/bin/fdesetup status | head -1 | awk '$NF == "On." {print NR}')"X = 1X ]; then
             alias reboot="sync;sync;sync;sudo /usr/bin/fdesetup authrestart"
         fi
         if [ -f ${HOME}/.ssh/mypass ]; then
@@ -32,14 +32,14 @@ case ${HOSTTYPE} in
         ;;
     Linux)
         if [ -e "$HOME/.colorrc" ]; then
-            eval $( dircolors -b "$HOME/.colorrc" )
+            eval $(dircolors -b "$HOME/.colorrc")
             alias ls='ls --color=auto --show-control-char -aFCh'
         else
             alias ls='ls --color=tty --show-control-char -aFCh'
         fi
         ;;
     *)
-        if [ "$( type -P ja-ls )" ]; then
+        if [ "$(type -P ja-ls)" ]; then
             alias ls='ja-ls -aFEC'
         else
             alias ls='ls -aFCh'
@@ -80,45 +80,45 @@ alias ssh='ssh -C'
 alias scp='scp -C'
 alias shfmt='shfmt -bn -ci'
 
-if [ "jless" = ${PAGER:=x} ];then
+if [ "jless" = ${PAGER:=x} ]; then
     alias less='jless'
-elif [ "more" = $PAGER ];then
+elif [ "more" = $PAGER ]; then
     alias less='more'
 fi
 
-if [ "$( type -P jman )" ]; then
+if [ "$(type -P jman)" ]; then
     alias man='jman'
 fi
 
-if [ "$( type -P gzcat )" ]; then
+if [ "$(type -P gzcat)" ]; then
     alias zcat='gzcat'
 fi
 
-if [ "$( type -P gmake )" ]; then
-	alias	 make='gmake'
+if [ "$(type -P gmake)" ]; then
+    alias make='gmake'
 fi
 
-if [ "$( type -P gtar )" ]; then
-	alias	 tar='gtar'
+if [ "$(type -P gtar)" ]; then
+    alias tar='gtar'
 fi
 
-if [ "$( type -P jvim )" ]; then
-	alias	 vi=jvim
+if [ "$(type -P jvim)" ]; then
+    alias vi=jvim
 fi
 
-if [ "$( type -P gpatch )" ]; then
-	alias	 patch=gpatch
+if [ "$(type -P gpatch)" ]; then
+    alias patch=gpatch
 fi
 
-if [ "$( type -P strace )" ]; then
+if [ "$(type -P strace)" ]; then
     alias strace='strace -s 1024 -t'
 fi
 
-if [ "$( type -P vim )" ]; then
+if [ "$(type -P vim)" ]; then
     alias vi=vim
 fi
 
-if [ "$( type -P sudo )" ]; then
+if [ "$(type -P sudo)" ]; then
     alias sudo='sudo -H'
 fi
 
