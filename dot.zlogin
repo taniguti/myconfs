@@ -1,6 +1,6 @@
-if [ -f "${HOME}/.systeminfo" ]; then . "${HOME}/.systeminfo"; fi
-
-export APPLE_SSH_ADD_BEHAVIOR="macos"
+if [ -f "${HOME}/.systeminfo" ]; then
+  . "${HOME}/.systeminfo"
+fi
 
 ssh-add --apple-load-keychain 2>/dev/null
 

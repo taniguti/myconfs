@@ -9,6 +9,7 @@ case "$CURRENT_SYSTEM" in
     Darwin)
         MACTYPE=$( system_profiler SPHardwareDataType 2> /dev/null | awk '$2 == "Identifier:" {print $3}' )
         echo "This is ${MACTYPE:=unknown} running with ${CURRENT_SYSTEM}/${CURRENT_MPU} $CURRENT_RELEASE."
+        export APPLE_SSH_ADD_BEHAVIOR="macos"
         ;;
     Linux)
         if [ -f /etc/issue ]; then DISTRIBUTION=$( head -1 /etc/issue ) ; fi
