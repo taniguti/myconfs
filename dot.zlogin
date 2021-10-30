@@ -1,6 +1,8 @@
 if [ -f "${HOME}/.systeminfo" ]; then . "${HOME}/.systeminfo"; fi
 
-ssh-add -A 2>/dev/null
+export APPLE_SSH_ADD_BEHAVIOR="macos"
+
+ssh-add --apple-load-keychain 2>/dev/null
 
 # ssh-agent with screen
 # http://www.gcd.org/blog/2006/09/100/
