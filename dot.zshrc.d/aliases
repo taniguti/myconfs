@@ -10,11 +10,6 @@ alias j='jobs'
 alias kinit='kinit --renewable'
 alias less='less -R'
 alias ll='ls -ohlh'
-if [ "$(uname)" = NetBSD ]; then
-  alias ls='ls -ahFC'
-else
-  alias ls='ls -ahFCvG'
-fi
 alias me='whoami'
 alias mv='mv -vi'
 alias mypass='cat ${HOME}/.ssh/mypass | pbcopy'
@@ -29,7 +24,6 @@ alias schg='chflags schg'
 alias scp='scp -C'
 alias shibuya='curl wttr.in/tokyo\?0\&lang=ja'
 alias inagi='curl wttr.in/inagi\?0\&lang=ja'
-alias ssh-add='ssh-add --apple-use-keychain'
 alias ssh='ssh -C'
 alias sudo='sudo -H'
 alias tcpdump='sudo tcpdump -s0 -X -vv'
@@ -39,3 +33,16 @@ if command -v 'vim' >/dev/null 2>&1; then alias vi='vim'; fi
 alias z='suspend'
 alias zcat='gzcat'
 alias shfmt='shfmt -bn -ci'
+
+if [ "$CURRENT_SYSTEM" = NetBSD ]; then
+  alias ls='ls -ahFC'
+else
+  alias ls='ls -ahFCvG'
+fi
+
+if [ "$CURRENT_SYSTEM" = Darwin ]; then
+    if [ "$( uname -r | awk -F. '{print $1}' )" -ge 21 ]; then
+        alias ssh-add='ssh-add --apple-use-keychain'
+    fi
+    alias ssh-add='ssh-add -K'
+fi

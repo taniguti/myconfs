@@ -2,7 +2,12 @@ if [ -f "${HOME}/.systeminfo" ]; then
   . "${HOME}/.systeminfo"
 fi
 
-ssh-add --apple-load-keychain 2>/dev/null
+
+if [ "$( uname -r | awk -F. '{print $1}' )" -ge 21 ] && [ "$CURRENT_SYSTEM" = Darwin ]; then
+    ssh-add --apple-load-keychain 2>/dev/null
+else
+    ssh-add -A 2>/dev/null
+fi
 
 # ssh-agent with screen
 # http://www.gcd.org/blog/2006/09/100/
