@@ -12,11 +12,9 @@ alias less='less -R'
 alias ll='ls -ohlh'
 alias me='whoami'
 alias mv='mv -vi'
-alias mypass='cat ${HOME}/.ssh/mypass | pbcopy'
 alias noschg='chflags noschg'
 alias nouchg='chflags nouchg'
 alias perlck='perl -Mstrict -Mwarnings -wc'
-alias reboot='sync;sync;sync;sudo /usr/bin/fdesetup authrestart'
 alias reset-term='stty sane'
 alias rm='rm -vi'
 alias rmf='rm -vrf'
@@ -29,20 +27,27 @@ alias sudo='sudo -H'
 alias tcpdump='sudo tcpdump -s0 -X -vv'
 alias top='top -u'
 alias uchg='chflags uchg'
-if command -v 'vim' >/dev/null 2>&1; then alias vi='vim'; fi
 alias z='suspend'
 alias zcat='gzcat'
-alias shfmt='shfmt -bn -ci'
 
-if [ "$CURRENT_SYSTEM" = NetBSD ]; then
-  alias ls='ls -ahFC'
-else
-  alias ls='ls -ahFCvG'
-fi
+if command -v 'vim'   >/dev/null 2>&1; then alias vi='vim'; fi
+if command -v 'shfmt' >/dev/null 2>&1; then alias shfmt='shfmt -bn -ci'; fi
 
-if [ "$CURRENT_SYSTEM" = Darwin ]; then
+case "$( uname -s )" in
+NetBSD )
+    alias ls='ls -ahFC'
+    ;;
+Darwin )
+    alias ls='ls -ahFCvG'
+    alias mypass='cat ${HOME}/.ssh/mypass | pbcopy'
+    alias reboot='sync;sync;sync;sudo /usr/bin/fdesetup authrestart'
     if [ "$( uname -r | awk -F. '{print $1}' )" -ge 21 ]; then
         alias ssh-add='ssh-add --apple-use-keychain'
+    else
+        alias ssh-add='ssh-add -K'
     fi
-    alias ssh-add='ssh-add -K'
-fi
+    ;;
+*)
+    alias ls='ls -ahFCvG'
+    ;;
+esac
