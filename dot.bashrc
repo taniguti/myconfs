@@ -174,7 +174,10 @@ PERL_BADLANG=0
 export PERL_BADLANG
 
 LC_TIME=C
-LANG=ja_JP.UTF-8
+LANG="$( locale -a | grep -i ja_JP.UTF | grep 8 )"
+if [ -z "$LANG" ]; then
+    LANG=C
+fi
 LANGUAGE="$LANG"
 LC_CTYPE="$LANG"
 export LC_TIME LANG LANGUAGE LC_CTYPE
