@@ -1,0 +1,4 @@
+if [ -S /var/run/multipass_socket ]; then
+    mygid="$(id -g)"
+    sudo chgrp "$mygid" /var/run/multipass_socket
+fi
