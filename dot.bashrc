@@ -246,6 +246,8 @@ if [ ! -f "$HOME/.sshagent_free" ]; then
         esac
     elif [ -S "$SSHAGENT_SOCK" ]; then
         export SSH_AUTH_SOCK="$SSHAGENT_SOCK"
+    else
+        eval $(ssh-agent) >/dev/null 2>&1
     fi
 else
     if [ ! -e "$SSH_AUTH_SOCK" ]; then

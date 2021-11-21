@@ -24,7 +24,9 @@ autocmd FileType ruby   setlocal shiftwidth=2 tabstop=2
 
 "タブの代わりに空白文字を指定する
 set expandtab
+" Makefileはtabを使う。
 autocmd FileType make setlocal noexpandtab
+autocmd FileType go   setlocal noexpandtab
 
 " status line
 " ファイル名表示
