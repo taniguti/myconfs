@@ -38,6 +38,7 @@ $HOMEBREW_PREFIX/bin
 /usr/local/samba/sbin
 /usr/local/git/bin
 /usr/local/git/sbin
+/usr/local/go/bin
 /Developer/Tools
 /System/Library/ServerSetup
 /Applications/Server.app/Contents/ServerRoot/usr/bin
