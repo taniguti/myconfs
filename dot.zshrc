@@ -130,3 +130,6 @@ fi
 if [ -f "${HOME}/.aws/credentials" ] && [ -z "$AWS_SHARED_CREDENTIALS_FILE" ]; then
   export AWS_SHARED_CREDENTIALS_FILE="${HOME}/.aws/credentials"
 fi
+
+# xmllint
+export XMLLINT_INDENT="    "
