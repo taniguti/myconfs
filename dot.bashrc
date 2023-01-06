@@ -96,6 +96,7 @@ fi
 #+++ Path list +++
 CMD_PATH="$HOME/bin $HOME/sbin $HOMEBREW_PREFIX/bin"
 CMD_PATH="$CMD_PATH $HOME/.cargo/bin"
+CMD_PATH="$CMD_PATH $HOME/.local/bin"
 CMD_PATH="$CMD_PATH /usr/local/bin /usr/local/sbin"
 CMD_PATH="$CMD_PATH /usr/local/munki"
 CMD_PATH="$CMD_PATH /usr/pkg/bin /usr/pkg/sbin"

@@ -1,6 +1,7 @@
 $HOME/bin
 $HOME/sbin
 $HOME/go/bin
+$HOME/.local/bin
 $HOMEBREW_PREFIX/bin
 /usr/local/bin
 /usr/local/sbin
