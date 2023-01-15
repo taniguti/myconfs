@@ -20,6 +20,7 @@ set shiftwidth=4
 set tabstop=4
 autocmd FileType yaml   setlocal shiftwidth=2 tabstop=2
 autocmd FileType ruby   setlocal shiftwidth=2 tabstop=2
+autocmd FileType json   setlocal shiftwidth=2 tabstop=2
 
 "タブの代わりに空白文字を指定する
 set expandtab
