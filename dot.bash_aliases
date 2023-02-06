@@ -79,7 +79,7 @@ alias less='less -R'
 alias ssh='ssh -C'
 alias scp='scp -C'
 if [ "$(type -P shfmt)" ]; then
-    alias shfmt='shfmt -bn -ci'
+    alias shfmt='shfmt -w -bn -ci'
 fi
 
 if [ "jless" = ${PAGER:=x} ]; then

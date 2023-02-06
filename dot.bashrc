@@ -322,3 +322,12 @@ if [ -n "$(command -v peco)" ] && [ "$IS_INTERACTIVE" = yes ]; then
 fi
 
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
+
+if [ -d "${HOME}/.bashrc.d" ]; then
+  for i in "${HOME}"/.bashrc.d/*.sh; do
+    if [ -r "$i" ]; then
+      . "$i"
+    fi
+  done
+  unset i
+fi
