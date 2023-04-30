@@ -37,6 +37,9 @@ case ${HOSTTYPE} in
         else
             alias ls='ls --color=tty --show-control-char -aFCh'
         fi
+        alias chmod='chmod --preserve-root'
+        alias chgrp='chgrp --preserve-root'
+        alias chown='chown --preserve-root'
         ;;
     *)
         if [ "$(type -P ja-ls)" ]; then
