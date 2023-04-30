@@ -1,4 +1,6 @@
 if [ -S /var/run/multipass_socket ]; then
     mygid="$(id -g)"
-    sudo chgrp "$mygid" /var/run/multipass_socket
+    if [ "$mygid" != "$(ls -ln /var/run/multipass_socket | awk '{print $4}')" ]; then
+        sudo chgrp "$mygid" /var/run/multipass_socket
+    fi
 fi
