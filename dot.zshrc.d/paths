@@ -48,3 +48,4 @@ $HOMEBREW_PREFIX/bin
 /Applications/Server.app/Contents/ServerRoot/usr/libexec
 /Applications/Server.app/Contents/ServerRoot/System/Library/ServerSetup
 /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources
+$HOME/Library/Application\ Support/multipass/bin
