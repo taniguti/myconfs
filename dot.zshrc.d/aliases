@@ -41,6 +41,7 @@ Darwin )
     alias ls='ls -ahFCvG'
     alias mypass='cat ${HOME}/.ssh/mypass | pbcopy'
     alias reboot='sync;sync;sync;sudo /usr/bin/fdesetup authrestart'
+    alias about_this_mac='system_profiler SPHardwareDataType'
     if [ "$( uname -r | awk -F. '{print $1}' )" -ge 21 ]; then
         alias ssh-add='ssh-add --apple-use-keychain'
     else
