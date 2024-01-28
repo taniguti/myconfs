@@ -31,9 +31,10 @@ alias uchg='chflags uchg'
 alias z='suspend'
 alias zcat='gzcat'
 
-
-
-if command -v 'vim'   >/dev/null 2>&1; then alias vi='vim'; fi
+if command -v 'vim'   >/dev/null 2>&1; then
+    alias vi='vim'
+    alias view='vim -R'
+fi
 if command -v 'shfmt' >/dev/null 2>&1; then alias shfmt='shfmt -bn -ci'; fi
 
 case "$( uname -s )" in
