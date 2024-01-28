@@ -121,6 +121,7 @@ fi
 
 if [ "$(type -P vim)" ]; then
     alias vi=vim
+    alias view='vi -R'
 fi
 
 if [ "$(type -P sudo)" ]; then
