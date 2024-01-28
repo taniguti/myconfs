@@ -96,6 +96,8 @@ fi
 #+++ Path list +++
 CMD_PATH="$HOME/bin $HOME/sbin $HOMEBREW_PREFIX/bin"
 CMD_PATH="$CMD_PATH $HOME/.cargo/bin"
+CMD_PATH="$CMD_PATH $HOME/.local/bin"
+CMD_PATH="$CMD_PATH $HOME/go/bin"
 CMD_PATH="$CMD_PATH /usr/local/bin /usr/local/sbin"
 CMD_PATH="$CMD_PATH /usr/local/munki"
 CMD_PATH="$CMD_PATH /usr/pkg/bin /usr/pkg/sbin"
@@ -321,3 +323,12 @@ if [ -n "$(command -v peco)" ] && [ "$IS_INTERACTIVE" = yes ]; then
 fi
 
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
+
+if [ -d "${HOME}/.bashrc.d" ]; then
+  for i in "${HOME}"/.bashrc.d/*.sh; do
+    if [ -r "$i" ]; then
+      . "$i"
+    fi
+  done
+  unset i
+fi

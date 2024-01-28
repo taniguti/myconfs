@@ -37,6 +37,9 @@ case ${HOSTTYPE} in
         else
             alias ls='ls --color=tty --show-control-char -aFCh'
         fi
+        alias chmod='chmod --preserve-root'
+        alias chgrp='chgrp --preserve-root'
+        alias chown='chown --preserve-root'
         ;;
     *)
         if [ "$(type -P ja-ls)" ]; then
@@ -78,7 +81,9 @@ alias getgip='curl -L --retry 3 --retry-max-time 10 http://ifconfig.me/ip'
 alias less='less -R'
 alias ssh='ssh -C'
 alias scp='scp -C'
-alias shfmt='shfmt -bn -ci'
+if [ "$(type -P shfmt)" ]; then
+    alias shfmt='shfmt -w -bn -ci'
+fi
 
 if [ "jless" = ${PAGER:=x} ]; then
     alias less='jless'

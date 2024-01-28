@@ -1,9 +1,13 @@
 $HOME/bin
 $HOME/sbin
+$HOME/go/bin
+$HOME/.local/bin
 $HOMEBREW_PREFIX/bin
+$HOME/Library/Application\ Support/multipass/bin
 /usr/local/bin
 /usr/local/sbin
 /System/Library/CoreServices/Applications/Network Utility.app/Contents/Resources
+/opt/homebrew/opt/sqlite/bin
 /usr/local/opt/python@3.8/bin
 /usr/local/opt/tcl-tk/bin
 /usr/local/munki
