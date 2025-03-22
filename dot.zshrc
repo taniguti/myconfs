@@ -99,7 +99,11 @@ if [ "${zplugInstalled:-no}" = yes ]; then
   zplug load
 else
   # History
+  # https://zsh.sourceforge.io/Doc/Release/Options.html#History
   setopt share_history
+  setopt inc_append_history
+  setopt hist_ignore_dups
+  setopt hist_ignore_space
 fi
 
 # History
