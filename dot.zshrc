@@ -82,6 +82,7 @@ fi
 for zrc in "${HOME}/.zshrc.d/aliases" \
   "${HOME}/.zshrc.d/homebrew.sh" \
   "${HOME}/.zshrc.d/multipass" \
+  "${HOME}/.zshrc.d/nodejs" \
   "${HOME}/.zshrc.d/aliases_by_host" \
   "${HOME}/.zshrc.d/zshrc_by_host" \
   "${ZPLUG_HOME}/init.zsh"; do
