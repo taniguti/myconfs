@@ -1,0 +1,4 @@
+if [ -h $HOME/.local/share/tmux/resurrect/last ]; then
+    in_use_file="$(ls -l "$HOME/.local/share/tmux/resurrect/last" | awk '{print $NF}')"
+    cd "$HOME/.local/share/tmux/resurrect" && rm $(ls -1 | grep -v -e 'last' -e $in_use_file)
+fi

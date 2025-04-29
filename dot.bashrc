@@ -176,7 +176,7 @@ PERL_BADLANG=0
 export PERL_BADLANG
 
 LC_TIME=C
-LANG="$( locale -a | grep -i ja_JP.UTF | grep 8 )"
+LANG="$(locale -a | grep -i ja_JP.UTF | grep 8)"
 if [ -z "$LANG" ]; then
     LANG=C
 fi
@@ -324,11 +324,17 @@ fi
 
 unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
 
+# tmux-resurrect
+if [ -h "$HOME/.local/share/tmux/resurrect/last" ]; then
+    in_use_file="$(ls -l "$HOME/.local/share/tmux/resurrect/last" | awk '{print $NF}')"
+    cd "$HOME/.local/share/tmux/resurrect" && rm $(ls -1 | grep -v -e 'last' -e $in_use_file)
+fi
+
 if [ -d "${HOME}/.bashrc.d" ]; then
-  for i in "${HOME}"/.bashrc.d/*.sh; do
-    if [ -r "$i" ]; then
-      . "$i"
-    fi
-  done
-  unset i
+    for i in "${HOME}"/.bashrc.d/*.sh; do
+        if [ -r "$i" ]; then
+            . "$i"
+        fi
+    done
+    unset i
 fi
