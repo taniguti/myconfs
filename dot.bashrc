@@ -327,7 +327,9 @@ unset TMOUT CNAME ME CMD_PATH MAN_PATH MYARCH
 # tmux-resurrect
 if [ -h "$HOME/.local/share/tmux/resurrect/last" ]; then
     in_use_file="$(ls -l "$HOME/.local/share/tmux/resurrect/last" | awk '{print $NF}')"
-    cd "$HOME/.local/share/tmux/resurrect" && rm $(ls -1 | grep -v -e 'last' -e $in_use_file)
+    for f in $(/bin/ls "$HOME/.local/share/tmux/resurrect" | grep -v -e last -e "$in_use_file"); do
+        /bin/rm -f "$HOME/.local/share/tmux/resurrect/$f"
+    done
 fi
 
 if [ -d "${HOME}/.bashrc.d" ]; then
