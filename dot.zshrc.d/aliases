@@ -31,32 +31,32 @@ alias uchg='chflags uchg'
 alias z='suspend'
 alias zcat='gzcat'
 
-if command -v 'vim'   >/dev/null 2>&1; then
+if command -v 'vim' >/dev/null 2>&1; then
     alias vi='vim'
     alias view='vim -R'
 fi
 if command -v 'shfmt' >/dev/null 2>&1; then alias shfmt='shfmt -bn -ci'; fi
 
-case "$( uname -s )" in
-NetBSD )
-    alias ls='ls -ahFC'
-    ;;
-Darwin )
-    alias ls='ls -ahFCvG'
-    alias mypass='cat ${HOME}/.ssh/mypass | pbcopy'
-    alias reboot='sync;sync;sync;sudo /usr/bin/fdesetup authrestart'
-    alias kill_md="launchctl unload /Library/LaunchAgents/com.microsoft.wdav.tray.plist"
-    alias about_this_mac='system_profiler SPHardwareDataType'
-    if [ -h /usr/local/bin/multipass ]; then
-        alias mp="/usr/local/bin/multipass"
-    fi
-    if [ "$( uname -r | awk -F. '{print $1}' )" -ge 21 ]; then
-        alias ssh-add='ssh-add --apple-use-keychain'
-    else
-        alias ssh-add='ssh-add -K'
-    fi
-    ;;
-*)
-    alias ls='ls -ahFCvG'
-    ;;
+case "$(uname -s)" in
+    NetBSD)
+        alias ls='ls -ahFC'
+        ;;
+    Darwin)
+        alias ls='ls -ahFCvG'
+        alias mypass='cat ${HOME}/.ssh/mypass | pbcopy'
+        alias reboot='sync;sync;sync;sudo /usr/bin/fdesetup authrestart'
+        alias kill_md="launchctl unload /Library/LaunchAgents/com.microsoft.wdav.tray.plist"
+        alias about_this_mac='system_profiler SPHardwareDataType'
+        if [ -h /usr/local/bin/multipass ]; then
+            alias mp="/usr/local/bin/multipass"
+        fi
+        if [ "$(uname -r | awk -F. '{print $1}')" -ge 21 ]; then
+            alias ssh-add='ssh-add --apple-use-keychain'
+        else
+            alias ssh-add='ssh-add -K'
+        fi
+        ;;
+    *)
+        alias ls='ls -ahFCvG'
+        ;;
 esac
