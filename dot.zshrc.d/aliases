@@ -30,6 +30,7 @@ alias top='top -u'
 alias uchg='chflags uchg'
 alias z='suspend'
 alias zcat='gzcat'
+alias clear_cntrl="sed 's/\x1B\[[0-?9;]*[mK]//g'"
 
 if command -v 'vim' >/dev/null 2>&1; then
     alias vi='vim'

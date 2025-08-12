@@ -52,6 +52,7 @@ case ${HOSTTYPE} in
         alias cp='cp -aiv'
         ;;
 esac
+alias clear_cntrl="sed 's/\x1B\[[0-?9;]*[mK]//g'"
 alias reset-term='stty sane'
 alias ll='ls -ohlh'
 alias lld='ll -dh'
