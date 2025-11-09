@@ -57,12 +57,12 @@ for i in $rcFiles; do
   fi
 done
 
-if [ -x /usr/bin/lesskey ]; then
-  if [ -f "${PATH_TO_CONF}/dot.lesskey" ]; then
-    ln -fs "${PATH_TO_CONF}/dot.lesskey" "$HOME/.lesskey"
-    /usr/bin/lesskey
-  fi
-fi
+#if [ -x /usr/bin/lesskey ]; then
+#  if [ -f "${PATH_TO_CONF}/dot.lesskey" ]; then
+#    ln -fs "${PATH_TO_CONF}/dot.lesskey" "$HOME/.lesskey"
+#    /usr/bin/lesskey
+#  fi
+#fi
 
 if [ -x /usr/bin/dircolors ]; then
   rm -f "$HOME/.colorrc"
