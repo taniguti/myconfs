@@ -1,0 +1,3 @@
+# For AWS Session Manager
+
+brew install --cask session-manager-plugin
