@@ -1,0 +1,5 @@
+Host aws-ssm
+    HostName <instance-id>
+    User ubuntu
+    IdentityFile ~/.ssh/<your-key>.pem
+    ProxyCommand sh -c "aws ssm start-session --target %h --document-name AWS-StartSSHSession --parameters 'portNumber=%p'"
