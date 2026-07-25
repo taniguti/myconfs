@@ -1,0 +1,15 @@
+global) /etc/zshenv
+local ) ~/.zshenv
+global) /etc/zprofile
+local ) ~/.zprofile
+global) /etc/zshrc
+local ) ~/.zshrc
+global) /etc/zlogin
+local ) ~/.zlogin
+
+zlogin はログインシェルの起動時に実行されるスクリプトで、
+zprofileはログインシェルの初期化時に実行されるスクリプトです。
+通常、zprofileは環境変数の設定やパスの追加など、
+ログインシェル全体に影響を与える設定を行うために使用されます。
+一方、zloginはログインシェルが開始された後に実行されるため、
+特定のコマンドやスクリプトを実行するために使用されることが多いです。

@@ -90,36 +90,11 @@ for zrc in "${HOME}/.zshrc.d/aliases" \
     if [ -f "$zrc" ]; then . "$zrc"; fi
 done
 
-if [ "${zplugInstalled:-no}" = yes ]; then
-    zplug "modules/history", from:prezto
-    zplug "modules/directory", from:prezto
-    if [ "$(uname -s)" = Darwin ]; then
-        zplug "modules/osx", from:prezto
-    fi
-
-    if ! zplug check --verbose; then zplug install; fi
-    zplug load
-else
-    # History
-    # https://zsh.sourceforge.io/Doc/Release/Options.html#History
-    setopt share_history
-    setopt inc_append_history
-    setopt hist_ignore_dups
-    setopt hist_ignore_space
-fi
-
-# History
-# https://qiita.com/takc923/items/8409a76e8a660f9f329f
-export HISTFILE="$HOME/.zsh_history"
-export HISTSIZE=1000000
-export SAVEHIST=1000000
-
 # Prompt
 export PS1="%n@%m:%2~[%h]%# "
 
 # color設定
 # http://neko-mac.blogspot.com/2015/03/mac_18.html
-export LSCOLORS=DxGxcxdxBxegedabagacad
 zstyle ':completion:*' list-colors di=33 ln=36 ex=31
 zstyle ':completion:*:kill:*' list-colors \
     '=(#b) #([0-9]#)*( *[a-z])*=34=31=33'

@@ -3,7 +3,7 @@
 
 commonFiles=".systeminfo .screenrc .vimrc .tmux.conf"
 bashFiles=".bash_profile .bashrc .bash_aliases .bash_logout .inputrc"
-zshFiles=".zshrc .zshrc.d .zlogin .zlogout .zprofile"
+zshFiles=".zshenv .zprofile .zshrc .zshrc.d .zlogin .zlogout"
 
 function get-git-completion() {
   local loginshell
@@ -56,13 +56,6 @@ for i in $rcFiles; do
     ln -fs "${PATH_TO_CONF}/dot$i" "$HOME/$i"
   fi
 done
-
-#if [ -x /usr/bin/lesskey ]; then
-#  if [ -f "${PATH_TO_CONF}/dot.lesskey" ]; then
-#    ln -fs "${PATH_TO_CONF}/dot.lesskey" "$HOME/.lesskey"
-#    /usr/bin/lesskey
-#  fi
-#fi
 
 if [ -x /usr/bin/dircolors ]; then
   rm -f "$HOME/.colorrc"
