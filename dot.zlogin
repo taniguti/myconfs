@@ -5,8 +5,9 @@ if [ "${zplugInstalled:-no}" = yes ]; then
     if [ "$(uname -s)" = Darwin ]; then
         zplug "modules/osx", from:prezto
     fi
-
-    if ! zplug check --verbose; then zplug install; fi
+    if ! zplug check --verbose; then
+        zplug install
+    fi
     zplug load
 else
     # History
