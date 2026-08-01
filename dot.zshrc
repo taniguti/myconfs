@@ -53,7 +53,7 @@ fi
 # Command search pathes
 setopt +o nomatch
 cat "${HOME}/.zshrc.d/paths" /etc/paths.d/* /etc/paths 2>/dev/null \
-    | grep -v ^# \
+    | grep -Ev '^(#|$)' \
     | awk NF \
     | while read -r CMDPATH; do
         if [ -d "$(eval echo "$CMDPATH")" ]; then
