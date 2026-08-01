@@ -50,6 +50,31 @@ if [ -d "${HOMEBREW_PREFIX}/opt/zplug" ]; then
     fi
 fi
 
+# HISTORY
+if [ "${zplugInstalled:-no}" = yes ]; then
+    zplug "modules/history", from:prezto
+    zplug "modules/directory", from:prezto
+    if [ "$(uname -s)" = Darwin ]; then
+        zplug "modules/osx", from:prezto
+    fi
+    if ! zplug check --verbose; then
+        zplug install
+    fi
+    zplug load
+else
+    # History
+    # https://zsh.sourceforge.io/Doc/Release/Options.html#History
+    setopt share_history
+    setopt inc_append_history
+    setopt hist_ignore_dups
+    setopt hist_ignore_space
+fi
+
+# https://qiita.com/takc923/items/8409a76e8a660f9f329f
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=1000000
+export SAVEHIST=1000000
+
 # Command search pathes
 setopt +o nomatch
 cat "${HOME}/.zshrc.d/paths" /etc/paths.d/* /etc/paths 2>/dev/null \
