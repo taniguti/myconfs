@@ -45,9 +45,9 @@ if [ -d "${HOMEBREW_PREFIX}/opt/zplug" ]; then
     zplugInstalled=yes
     export ZPLUG_HOME="${HOMEBREW_PREFIX}/opt/zplug"
     source "${ZPLUG_HOME}/init.zsh"
-#    if [ -r "${HOME}/.zshrc.d/zplugrc" ]; then
-#        source "${HOME}/.zshrc.d/zplugrc"
-#    fi
+    if [ -r "${HOME}/.zshrc.d/zplugrc" ]; then
+        source "${HOME}/.zshrc.d/zplugrc"
+    fi
 fi
 
 # Command search pathes
