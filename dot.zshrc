@@ -40,9 +40,14 @@ if [ "$brewInstalled" = yes ]; then
     export HOMEBREW_CASK_OPTS="--appdir=/Applications --no-quarantine"
 fi
 
+# https://dev.classmethod.jp/articles/20240408-i-tried-to-get-zplug-working-now/
 if [ -d "${HOMEBREW_PREFIX}/opt/zplug" ]; then
     zplugInstalled=yes
     export ZPLUG_HOME="${HOMEBREW_PREFIX}/opt/zplug"
+    source "${ZPLUG_HOME}/init.zsh"
+    if [ -r "${HOME}/.zshrc.d/zplugrc" ]; then
+        source "${HOME}/.zshrc.d/zplugrc"
+    fi
 fi
 
 # Command search pathes
@@ -85,8 +90,7 @@ for zrc in "${HOME}/.zshrc.d/aliases" \
     "${HOME}/.zshrc.d/nodejs" \
     "${HOME}/.zshrc.d/tmux-resurrect" \
     "${HOME}/.zshrc.d/aliases_by_host" \
-    "${HOME}/.zshrc.d/zshrc_by_host" \
-    "${ZPLUG_HOME}/init.zsh"; do
+    "${HOME}/.zshrc.d/zshrc_by_host" ; do
     if [ -f "$zrc" ]; then . "$zrc"; fi
 done
 
