@@ -114,3 +114,7 @@ fi
 
 # xmllint
 export XMLLINT_INDENT="    "
+
+# keybind
+# EDITOR=vi でviモードになっているのでEMACSモードにする
+bindkey -e
