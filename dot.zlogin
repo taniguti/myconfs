@@ -2,10 +2,18 @@ if [ -f "${HOME}/.systeminfo" ]; then
     . "${HOME}/.systeminfo"
 fi
 
-if [ "$(uname -r | awk -F. '{print $1}')" -ge 21 ] && [ "$CURRENT_SYSTEM" = Darwin ]; then
-    ssh-add --apple-load-keychain 2>/dev/null
-else
-    ssh-add -A 2>/dev/null
+if [ -z "$SSH_TTY" ]; then
+    ssh-add -D >/dev/null 2>&1
+    if [ "$(uname -r | awk -F. '{print $1}')" -ge 21 ] && [ "$CURRENT_SYSTEM" = Darwin ]; then
+        if [ -r "${HOME}/.ssh/id_ed25519_emu" ]; then
+            ssh-add --apple-use-keychain "${HOME}/.ssh/id_ed25519_emu" 2>/dev/null
+        fi
+        if [ -r "${HOME}/.ssh/id_ed25519" ]; then
+            ssh-add --apple-use-keychain "${HOME}/.ssh/id_ed25519" 2>/dev/null
+        fi
+    else
+        ssh-add -A 2>/dev/null
+    fi
 fi
 
 # ssh-agent with screen
